@@ -8,7 +8,7 @@ month: 3
 day: 22
 published: true
 summary: A follow up post on how I built my blog
-image: post_two.jpg
+image: first_post.svg
 ---
 
 <div class="row">
@@ -86,12 +86,12 @@ image: post_two.jpg
 	
 <div class="row">
 	<div class="span9 columns">    
-		<h2>Comments Section</h2>
-	    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
 		<div id="disqus_thread"></div>
 		<script type="text/javascript">
 			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			var disqus_shortname = 'ericjones'; // required: replace example with your forum shortname
+			var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
 			var disqus_identifier = '{{ page.url }}';
 			var disqus_url = 'http://erjjones.github.com{{ page.url }}';
 			

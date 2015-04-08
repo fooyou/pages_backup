@@ -1,7 +1,3 @@
-## Erjjones.Github.com
+## meshinestar.Github.io
 
-This is my GitHub user page made with Jekyll, and [Fuel UX](http://exacttarget.github.com/fuelux/).  Download it, fork it, follow it, give it away...
-
-Have any feedback for me? [File an issue on this
-project](https://github.com/erjjones/Feedback/issues/new) and I will get back to
-you as soon as I can.
+从Erric那里fork过来的，github pages的个人博客模板，非常感谢[Eric](http://erjjones.github.com/)
