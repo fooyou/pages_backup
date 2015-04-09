@@ -21,13 +21,13 @@ jQuery(document).ready(function() {
 		};
 	}	
 	
-	$('#ghw').githubWidget({
-			'username': 'Erjjones',
-			'displayActions': false,
-			'firstCount': 10,
-			'displayHeader': false,
-			'displayLastCommit': false,
-			'displayAccountInformations': false,
-			'displayLanguage': false
-		});
+	// $('#ghw').githubWidget({
+	// 		'username': 'JoshuaLiu',
+	// 		'displayActions': false,
+	// 		'firstCount': 10,
+	// 		'displayHeader': false,
+	// 		'displayLastCommit': false,
+	// 		'displayAccountInformations': false,
+	// 		'displayLanguage': false
+	// 	});
 });

@@ -42,6 +42,8 @@ image: first_post.svg
     ./configure --enable-shared && make && make install
     ```
     
+------
+
 <div class="row">   
     <div class="span9 columns">    
         <h2>评论</h2>
