@@ -1,4 +1,4 @@
 auto: true
-markdown: rdiscount
+markdown: redcarpet
 highlighter: pygments
 permalink: /blog/:title

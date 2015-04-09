@@ -19,7 +19,7 @@
 	</div>
 </div>		
 <div class="row">	
-	<div class="span5 column">
+	<div class="span6 column">
 		<h5><strong>{{ page.date | date: "%Y-%m-%d" }} <small>. {{ page.category }} . <a href="http://meshinestar.github.io{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.url }}">评论</a></small></strong>
 		<br/><small>标签: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small><br/><br/>
 
@@ -42,7 +42,7 @@
 		<!-- JiaThis Button END -->
 	</div>
 	
-	<div class="span4 column">
+	<div class="span3 column">
 		<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>  
 	</div>
 </div>
