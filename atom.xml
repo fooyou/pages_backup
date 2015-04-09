@@ -8,7 +8,7 @@ layout: post2
  <link href="http://meshinestar.github.io/atom.xml" rel="self"/>
  <link href="http://meshinestar.github.io/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://erjjones.github.com</id>
+ <id>http://meshinestar.github.io</id>
  <author>
    <name>Eric Jones</name>
  </author>
@@ -16,9 +16,9 @@ layout: post2
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://meshinestar.github.com{{ post.url }}"/>
+   <link href="http://meshinestar.github.io{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://erjjones.github.com{{ post.id }}</id>
+   <id>http://meshinestar.github.io{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}

@@ -2,12 +2,12 @@
 layout: post
 title: 大爷在测试博客
 category: Coding
-tags: 还吃
+tags: ffmpeg ubuntu
 year: 2015
 month: 04
 day: 08
 published: true
-summary: Fuel UX extends Twitter Bootstrap with additional lightweight JavaScript controls for your web application. 
+summary: ubutnu中使用动态链接库的场景 
 image: first_post.svg
 ---
 
@@ -23,19 +23,16 @@ image: first_post.svg
         <p>欢迎回复，请保证一不跑题二要干净</p>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
-            var disqus_identifier = '/blog/Test';
-            var disqus_url = '/blog/Test';
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
             
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
 </div>
