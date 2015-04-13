@@ -1954,10 +1954,10 @@ textarea.span1,
   -moz-border-radius-topleft: 4px;
 }
 
-.fuelux .table-striped tbody tr:nth-child(odd) td,
+/*.fuelux .table-striped tbody tr:nth-child(odd) td,
 .fuelux .table-striped tbody tr:nth-child(odd) th {
   background-color: #f9f9f9;
-}
+}*/
 
 .fuelux .table-hover tbody tr:hover td,
 .fuelux .table-hover tbody tr:hover th {
