@@ -1,54 +1,33 @@
 <script type="text/javascript">
-		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-		var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
-		var disqus_identifier = '{{ page.url }}';
-		var disqus_url = 'http://meshinestar.github.io{{ page.url }}';
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '{{ page.url }}';
+	// var disqus_url = 'http://fooyou.github.io{{ page.url }}';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
 
-		/* * * DON'T EDIT BELOW THIS LINE * * */
-		(function () {
-			var s = document.createElement('script'); s.async = true;
-			s.type = 'text/javascript';
-			s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-			(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-		}());
-	</script>
-	
-<div class="row">	
-	<div class="span9 column">
-		<p><h1>{{ page.title }}</h1></p>	
-	</div>
-</div>		
-<div class="row">	
-	<div class="span6 column">
-		<h5><strong>{{ page.date | date: "%Y-%m-%d" }} <small>. {{ page.category }} . <a href="http://meshinestar.github.io{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.url }}">评论</a></small></strong>
-		<br/><small>标签: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small><br/><br/>
-
-		<!-- JiaThis Button BEGIN -->
-		<div class="jiathis_style">
-			<span class="jiathis_txt">分享到：</span>
-			<a class="jiathis_button_tools_1"></a>
-			<a class="jiathis_button_tools_2"></a>
-			<a class="jiathis_button_tools_3"></a>
-			<a class="jiathis_button_tools_4"></a>
-			<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-			<a class="jiathis_counter_style"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-
-			<!-- twitter share -->
-			<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-via="liuchaozhen">Tweet</a> -->
-			<!-- Google Plus share, Dynamic load js which is in footer.html -->
-			<!-- <g:plusone size="medium">Goolge+</g:plusone> -->
-		</div>
-		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-		<!-- JiaThis Button END -->
-	</div>
-	
-	<div class="span3 column">
-		<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>  
-	</div>
+<div class="row">
+    <div class="span12 column">
+        <p><h1>{{ page.title }}</h1></p>
+    </div>
 </div>
 <div class="row">
-	<div class="span9 column">
-		<hr>
-	</div>
+    <div class="span12 column">
+        <h5><strong>{{ page.date | date: "%Y-%m-%d" }} <small>. {{ page.category }} . <a href="http://fooyou.github.io{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.url }}">评论</a></small></strong>
+        <br/><small>标签: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small><br/><br/>
+    </div>
 </div>
-
+<div class="row">
+    <div class="span6 column">
+        <hr>
+    </div>
+    <div class="span3 column">
+        <p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="上一篇: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="下一篇: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>
+    </div>
+</div>

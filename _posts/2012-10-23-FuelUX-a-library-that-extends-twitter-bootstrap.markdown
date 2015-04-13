@@ -29,7 +29,7 @@ image: first_post.svg
 		<p><b>Second</b> change the link and script references from bootstrap to the fuelux.  Since FuelUX extends Bootstrap you shouldn't have any issues and along with it get more controls.  I could have also choosen to use the actual css files by downloading them from the <a href="https://github.com/ExactTarget/fuelux" target="_blank">GitHub Repo</a> <i>dist/css</i> <a href="https://github.com/ExactTarget/fuelux/tree/master/dist/css" target="_blank">folder</a>.</p>
 		<p><pre><code>&lt;link href="http://fuelux.exacttargetapps.com/fuelux/2.0/css/fuelux.css" rel="stylesheet" /&gt;<br/>
 &lt;link href="http://fuelux.exacttargetapps.com/fuelux/2.0/css/fuelux-responsive.css" rel="stylesheet" /&gt;<br/>
-&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
+&lt;script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
 &lt;script src="http://fuelux.exacttargetapps.com/fuelux/2.0/loader.min.js" type="text/javascript"&gt;&lt;/script&gt;		
 		</code></pre></p>
 		<p>That is it!  Your site still has the Bootstrap markup and <a href="http://code.exacttarget.com/devcenter/fuel-ux" target="_blank">some more controls</a>.</p>
@@ -37,7 +37,7 @@ image: first_post.svg
 		<p>Themes were baked in as well, if you want to see one of the themes .. alter the link and script resource links as follows:</p>
 		<p><pre><code>&lt;link href="http://fuelux.exacttargetapps.com/<b>fuelux-imh</b>/2.0/css/fuelux.css" rel="stylesheet" /&gt;<br/>
 &lt;link href="http://fuelux.exacttargetapps.com/<b>fuelux-imh</b>/2.0/css/fuelux-responsive.css" rel="stylesheet" /&gt;<br/>
-&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
+&lt;script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
 &lt;script src="http://fuelux.exacttargetapps.com/<b>fuelux-imh</b>/2.0/loader.min.js" type="text/javascript"&gt;&lt;/script&gt;		
 		</code></pre></p>
 		<h2>Sample Starter Page</h2>
@@ -49,32 +49,3 @@ image: first_post.svg
 		<p><a href="http://news.ycombinator.com/item?id=4688066" target="_blank" title="See what others are saying on Hacker News"><img src="/img/yc500.gif" title="See {{ page.title }} on Hacker News" /> Hacker News link</a></p>
 	</div>
 </div> 
-
-<div class="row">	
-	<div class="span9 column">
-			<p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>  
-	</div>
-</div>
-
-<div class="row">	
-    <div class="span9 columns">    
-        <h2>评论</h2>
-        <p>欢迎回复，请保证一不跑题二要干净</p>
-		<div id="disqus_thread"></div>
-		<script type="text/javascript">
-			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-			var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
-			var disqus_identifier = '{{ page.url }}';
-			var disqus_url = 'http://erjjones.github.com{{ page.url }}';
-			
-			/* * * DON'T EDIT BELOW THIS LINE * * */
-			(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-	</div>
-</div>

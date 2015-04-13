@@ -1,6 +1,6 @@
 ---
 layout: post
-title: pickle和cPickle：Python对象的序列化（上）
+title: pickle和cPickle：Python对象的序列化
 category: Coding
 tags: python 序列化 多进程
 year: 2015
@@ -199,3 +199,152 @@ READ: last (tsal)
 ------
 
 pickle协议（pickle protocol）自动处理对象间的环形引用，因此，即使是很复杂的对象，你也不用特别为此做什么。考虑下面这个图：
+
+<!-- Title: complex Pages: 1 -->
+<svg width="98pt" height="260pt"
+ viewBox="0.00 0.00 98.00 260.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+<title>complex</title>
+<!-- root -->
+<g id="node1" class="node"><title>root</title>
+<ellipse fill="none" stroke="gray" cx="63" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="63" y="-230.3" font-family="Times,serif" font-size="14.00" fill="gray">root</text>
+</g>
+<!-- a -->
+<g id="node2" class="node"><title>a</title>
+<ellipse fill="none" stroke="gray" cx="27" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00" fill="gray">a</text>
+</g>
+<!-- root&#45;&gt;a -->
+<g id="edge1" class="edge"><title>root&#45;&gt;a</title>
+<path fill="none" stroke="gray" d="M54.6504,-216.765C50.2885,-208.283 44.8531,-197.714 39.9587,-188.197"/>
+<polygon fill="gray" stroke="gray" points="42.9904,-186.439 35.3043,-179.147 36.7654,-189.641 42.9904,-186.439"/>
+</g>
+<!-- b -->
+<g id="node3" class="node"><title>b</title>
+<ellipse fill="none" stroke="gray" cx="27" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00" fill="gray">b</text>
+</g>
+<!-- root&#45;&gt;b -->
+<g id="edge2" class="edge"><title>root&#45;&gt;b</title>
+<path fill="none" stroke="gray" d="M71.865,-216.681C80.5522,-198.388 91.1272,-168.13 81,-144 75.2881,-130.39 64.1878,-118.518 53.5293,-109.479"/>
+<polygon fill="gray" stroke="gray" points="55.5654,-106.626 45.5615,-103.137 51.2063,-112.103 55.5654,-106.626"/>
+</g>
+<!-- a&#45;&gt;a -->
+<g id="edge4" class="edge"><title>a&#45;&gt;a</title>
+<path fill="none" stroke="gray" d="M46.895,-174.432C59.688,-177.675 72,-173.531 72,-162 72,-153.622 65.5006,-149.143 57.0395,-148.564"/>
+<polygon fill="gray" stroke="gray" points="56.5019,-145.1 46.895,-149.568 57.191,-152.066 56.5019,-145.1"/>
+</g>
+<!-- a&#45;&gt;b -->
+<g id="edge3" class="edge"><title>a&#45;&gt;b</title>
+<path fill="none" stroke="gray" d="M21.1601,-144.411C20.2975,-136.507 20.0481,-126.852 20.4119,-117.935"/>
+<polygon fill="gray" stroke="gray" points="23.9033,-118.179 21.1206,-107.956 16.9209,-117.683 23.9033,-118.179"/>
+</g>
+<!-- b&#45;&gt;a -->
+<g id="edge6" class="edge"><title>b&#45;&gt;a</title>
+<path fill="none" stroke="gray" d="M32.8794,-107.956C33.7139,-115.827 33.9485,-125.374 33.5831,-134.187"/>
+<polygon fill="gray" stroke="gray" points="30.0742,-134.184 32.8399,-144.411 37.0558,-134.691 30.0742,-134.184"/>
+</g>
+<!-- c -->
+<g id="node4" class="node"><title>c</title>
+<ellipse fill="none" stroke="gray" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00" fill="gray">c</text>
+</g>
+<!-- b&#45;&gt;c -->
+<g id="edge5" class="edge"><title>b&#45;&gt;c</title>
+<path fill="none" stroke="gray" d="M27,-71.6966C27,-63.9827 27,-54.7125 27,-46.1124"/>
+<polygon fill="gray" stroke="gray" points="30.5001,-46.1043 27,-36.1043 23.5001,-46.1044 30.5001,-46.1043"/>
+</g>
+</g>
+</svg>
+
+上图虽然包括几个环形引用，但也能以正确的结构腌渍和重新读取（reloaded）。
+
+```python
+import pickle
+
+class Node(object):
+    """
+    一个所有结点都可知它所连通的其它结点的简单有向图。
+    """
+    def __init__(self, name):
+        self.name = name
+        self.connections = []
+        return
+
+    def add_edge(self, node):
+        "创建两个结点之间的一条边。"
+        self.connections.append(node)
+        return
+
+    def __iter__(self):
+        return iter(self.connections)
+
+def preorder_traversal(root, seen=None, parent=None):
+    """产生器（Generator ）函数通过一个先根遍历（preorder traversal）生成（yield）边。"""
+    if seen is None:
+        seen = set()
+    yield (parent, root)
+    if root in seen:
+        return
+    seen.add(root)
+    for node in root:
+        for (parent, subnode) in preorder_traversal(node, seen, root):
+            yield (parent, subnode)
+    return
+
+def show_edges(root):
+    "打印图中的所有边。"
+    for parent, child in preorder_traversal(root):
+        if not parent:
+            continue
+        print '%5s -> %2s (%s)' % (parent.name, child.name, id(child))
+
+# 创建结点。
+root = Node('root')
+a = Node('a')
+b = Node('b')
+c = Node('c')
+
+# 添加边。
+root.add_edge(a)
+root.add_edge(b)
+a.add_edge(b)
+b.add_edge(a)
+b.add_edge(c)
+a.add_edge(a)
+
+print 'ORIGINAL GRAPH:'
+show_edges(root)
+
+# 腌渍和反腌渍该图来创建
+# 一个结点集合。
+dumped = pickle.dumps(root)
+reloaded = pickle.loads(dumped)
+
+print
+print 'RELOADED GRAPH:'
+show_edges(reloaded)
+```
+
+重新读取的诸多节点（译者注：对应图中的圆圈）不再是同一个对象，但是节点间的关系保持住了，而且读取的仅仅是带有多个引用的对象的一个拷贝。上面所说的可以通过测试各节点在pickle处理前和之后的id()值来验证。
+
+```
+$ python pickle_cycle.py
+
+ORIGINAL GRAPH:
+ root ->  a (4299721744)
+    a ->  b (4299721808)
+    b ->  a (4299721744)
+    b ->  c (4299721872)
+    a ->  a (4299721744)
+ root ->  b (4299721808)
+
+RELOADED GRAPH:
+ root ->  a (4299722000)
+    a ->  b (4299722064)
+    b ->  a (4299722000)
+    b ->  c (4299722128)
+    a ->  a (4299722000)
+ root ->  b (4299722064)
+```
