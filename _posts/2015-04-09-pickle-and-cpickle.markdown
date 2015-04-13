@@ -348,3 +348,7 @@ RELOADED GRAPH:
     a ->  a (4299722000)
  root ->  b (4299722064)
 ```
+
+------
+
+*本文参见：http://segmentfault.com/a/1190000002493548 和英文原文:http://pymotw.com/2/pickle/*
