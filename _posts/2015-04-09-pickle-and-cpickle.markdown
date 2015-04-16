@@ -1,13 +1,13 @@
 ---
 layout: post
 title: pickle和cPickle：Python对象的序列化
-category: Coding
-tags: python 序列化 多进程
+category: Document
+tags: python serialization multi-process
 year: 2015
 month: 04
 day: 09
 published: true
-summary: pickle模块实现了一种算法，将任意一个Python对象转化成一系列字节（byets）。此过程也调用了serializing对象。代表对象的字节流之后可以被传输或存储，再重构后创建一个拥有相同特征（the same characteristics）的新的对象。 
+summary: pickle模块将对象序列化到文件。
 image: first_post.svg
 ---
 
@@ -349,6 +349,4 @@ RELOADED GRAPH:
  root ->  b (4299722064)
 ```
 
-------
-
-*本文参见：http://segmentfault.com/a/1190000002493548 和英文原文:http://pymotw.com/2/pickle/*
+> 本文参见：http://segmentfault.com/a/1190000002493548 和英文原文:http://pymotw.com/2/pickle/

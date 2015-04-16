@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ubuntu上编译ffmpeg的动态链接库（.so）
-category: Coding
+category: Workaround
 tags: ffmpeg ubuntu build
 year: 2015
 month: 04

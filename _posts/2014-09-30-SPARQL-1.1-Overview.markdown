@@ -1,0 +1,43 @@
+---
+layout: post
+title: SPARQL 1.1概述
+category: Document
+tags: Semantic-Web SPARQL
+year: 2014
+month: 09
+day: 30
+published: true
+summary: 本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
+image: first_post.svg
+---
+
+*W3C推荐标准2013年3月21日*
+
+## 摘要
+
+本文档是SPARQL 1.1的概览。它介绍了一套W3C的规范，以便于在Web或在RDF存储上查询和操作RDF图的内容。
+
+## 目录
+
+1. 引言
+    - 1.1 示例
+2. SPARQL 1.1 查询语言
+3. SPARQL 1.1 支持多种查询结果格式（XML、JSON、CSV、TSV）
+4. SPARQL 1.1 联合查询
+5. SPARQL 1.1 Entailment Regimes 
+6. SPARQL 1.1 更新语言
+7. SPARQL 1.1 RDF协议
+8. SPARQL 1.1 服务描述
+9. SPARQL 1.1 图存储HTTP协议
+10. 致谢
+11. 参考文献
+
+------
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
