@@ -1,39 +1,9 @@
 ---
 layout: default
 ---
-<!-- pygments 语法高亮 -->
-<!-- <script type="text/javascript">
-    $(function(){
-        // $("pre").addClass("hll");
-        $("pre").each(function(){
-            if ($(this).children(".language-text").length <= 0)
-                $(this).addClass("hll");
-        })
-    });
-</script> -->
-<!-- <link rel="stylesheet" href="/css/pygments/manni.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/igor.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/xcode.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/vim.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/autumn.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/vs.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/rrt.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/native.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/perldoc.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/borland.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/tango.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/emacs.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/friendly.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/monokai.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/paraiso-dark.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/colorful.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/murphy.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/bw.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/pastie.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/paraiso-light.css"> -->
+
 <link rel="stylesheet" href="/css/pygments/trac.css">
-<!-- <link rel="stylesheet" href="/css/pygments/default.css"> -->
-<!-- <link rel="stylesheet" href="/css/pygments/fruity.css"> -->
+
 <div class="content">
     {% include post_header.html %}
     {{ content }}
@@ -55,15 +25,15 @@ layout: default
         <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            // //* * * CONFIGURATION VARIABLES * * */
-            // var disqus_shortname = 'meshinestar';
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
             
-            // //* * * DON'T EDIT BELOW THIS LINE * * */
-            // (function() {
-            //     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            //     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            //     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            // })();
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
