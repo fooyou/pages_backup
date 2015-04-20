@@ -2,7 +2,7 @@
 layout: post
 title: image 2 pdf和pdf 2image
 category: Document
-tags: vim
+tags: image
 year: 2014
 month: 09
 day: 14
