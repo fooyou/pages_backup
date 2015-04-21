@@ -1,6 +1,6 @@
 ---
 layout: post
-title: image 2 pdf和pdf 2image
+title: image 2 pdf和pdf 2 image
 category: Document
 tags: image
 year: 2014
