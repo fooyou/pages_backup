@@ -9,6 +9,7 @@ day: 18
 published: true
 summary: vi linux程序员编写代码神器
 image: first_post.svg
+comment: true
 ---
 
 ### 进入vi的命令

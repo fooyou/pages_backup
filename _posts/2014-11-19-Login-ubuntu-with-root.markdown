@@ -9,6 +9,7 @@ day: 19
 published: true
 summary: Ubuntu下root登录方法
 image: first_post.svg
+comment: true
 ---
 
 Ubuntu 默认是不允许使用root登录的，要使用root权限，就必须使用sudo命令来执行，安全繁琐。

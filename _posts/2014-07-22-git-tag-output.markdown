@@ -9,6 +9,7 @@ day: 23
 published: true
 summary: git的tag标签操作
 image: first_post.svg
+comment: true
 ---
 
 ## git tag 操作

@@ -9,6 +9,7 @@ day: 08
 published: true
 summary: ubutnu中使用动态链接库的场景 
 image: first_post.svg
+comment: true
 ---
 
 ##问题

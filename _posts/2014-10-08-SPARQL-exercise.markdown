@@ -9,6 +9,7 @@ day: 08
 published: true
 summary: 看完《理解SPARQL》做了如下练习，使用dbpedia在线SPARQL进行，网址：http://dbpedia.org/snorql/
 image: first_post.svg
+comment: true
 ---
 
 # SPARQL 练习

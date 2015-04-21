@@ -9,6 +9,7 @@ day: 28
 published: true
 summary: Ubuntu下，和VirtualBox下的Windows系统共享文件夹 
 image: first_post.svg
+comment: true
 ---
 
 有些时候，我们可能需要在Ubuntu中虚拟一个Windows操作系统，如下是我的环境配置： 

@@ -9,6 +9,7 @@ day: 17
 published: true
 summary: Ubuntu系统修改系统环境变量的最好方法是在/etc/profile.d/文件夹下编写sh文件，而非直接修改/etc/profile文件。
 image: first_post.svg
+comment: true
 ---
 
 Linux系统包含两类持久性环境变量：用户环境变量(Session-wide)和系统环境变量(System-wide)。用户环境变量仅仅对当前的用户有效，系统环境变量对所有用户都有效。

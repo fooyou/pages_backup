@@ -17,6 +17,8 @@ layout: default
         <p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="上一篇: {{page.previous.title}}"><i class="icon-chevron-left"></i></a>   {% endif %}   {% if page.next.url %}    <a href="{{page.next.url}}" title="下一篇: {{page.next.title}}"><i class="icon-chevron-right"></i></a>   {% endif %} </p>
     </div>
 </div>
+
+{% if page.comment == true %}
 <div class="row">
     <div class="span12 columns">
         <h2>评论</h2>
@@ -37,3 +39,4 @@ layout: default
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </div>
 </div>
+{% endif %}

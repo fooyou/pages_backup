@@ -9,6 +9,7 @@ day: 09
 published: true
 summary: pickle模块将对象序列化到文件。
 image: first_post.svg
+comment: true
 ---
 
 *目的：Python对象序列化*
