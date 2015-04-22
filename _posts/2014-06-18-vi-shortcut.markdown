@@ -1,8 +1,8 @@
 ---
 layout: post
-title: VI常用快捷键
+title: vim常用快捷键
 category: Document
-tags: vi
+tags: vim
 year: 2014
 month: 06
 day: 18
@@ -11,6 +11,18 @@ summary: vi linux程序员编写代码神器
 image: first_post.svg
 comment: true
 ---
+
+vi有三种模式：Normal、Visual、Edit模式。
+
+进入Vim后就是Normal模式
+Normal  -- v --> Virtual
+Normal  -- V --> Virtual line
+Normal  -- Ctrl + V --> Virtual block
+
+Virtual --ESC--> Normal
+Normal --i, a, etc --> Edit
+
+Virtual 模式可进行选中，复制，粘贴操作
 
 ### 进入vi的命令
 
@@ -158,3 +170,14 @@ Key | Description
 "?nyl | 将当前行及其下n个字符保存到寄存器？中，其中?为一个字母，n为一个数字 
 "?p | 取出寄存器？中的内容并将其放到光标位置处。这里？可以是一个字母，也可以是一个数字 
 ndd | 将当前行及其下共n行文本删除，并将所删内容放到1号删除寄存器中。
+
+## 选中复制粘贴
+
+  Key  | Description
+-------|--------------------------
+   d   | 剪切
+   y   | 复制
+   p   | 粘贴
+   ^   | 选中当前行，光标位置至行首
+   $   | 选中当前行，光标位置至行尾
+
