@@ -7,7 +7,7 @@ year: 2015
 month: 05
 day: 04
 published: true
-summary: Python import模块出现如是错误时，不要着急，把.pyc删掉就可以了。
+summary: Python import模块出现如是错误时，不要着急，把.pyc删掉就可以了
 image: first_post.svg
 comment: true
 ---
