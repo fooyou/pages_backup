@@ -1,8 +1,8 @@
 ---
 layout: post
-title: ImportError: bad magic number in 'time': b'\x03\xf3\r\n'
+title: "ImportError: bad magic number in 'time': b'\\x03\\xf3\\r\\n'"
 category: Document
-tags: spiritual christian
+tags: python
 year: 2015
 month: 05
 day: 04
