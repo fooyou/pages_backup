@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 为git仓库添加过个远程url地址
+title: 为git仓库添加多个远程url地址
 category: Document
 tags: git
 year: 2015
@@ -41,8 +41,10 @@ git remote add origin2
 首先，我们从零开始， 
 假设你现在想要增加3个远程库地址，分别为 :
 
-https://git.oschina.net/shede333/swioslibary.git 
-https://git.oschina.net/shede333/swscrollbar.git 
+https://git.oschina.net/shede333/swioslibary.git
+
+https://git.oschina.net/shede333/swscrollbar.git
+
 https://github.com/shede333/CoreAnimationTestSW.git
 
 首先，先增加第一个地址:

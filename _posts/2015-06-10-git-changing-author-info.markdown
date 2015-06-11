@@ -12,7 +12,7 @@ image: first_post.svg
 comment: true
 ---
 
-## 修改作者信息
+## 修改用户信息
 
 
 
