@@ -8,7 +8,7 @@ month: 06
 day: 23
 published: true
 summary: 为什么要less和sass？互联网风吹
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

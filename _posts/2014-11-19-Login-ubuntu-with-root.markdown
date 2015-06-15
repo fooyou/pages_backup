@@ -8,7 +8,7 @@ month: 11
 day: 19
 published: true
 summary: Ubuntu下root登录方法
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

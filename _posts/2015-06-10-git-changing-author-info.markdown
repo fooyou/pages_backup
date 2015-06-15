@@ -8,7 +8,7 @@ month: 06
 day: 10
 published: true
 summary: Git提交后信息修改。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

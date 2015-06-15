@@ -8,7 +8,7 @@ month: 05
 day: 27
 published: true
 summary: 介绍linux下压缩命令的使用。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

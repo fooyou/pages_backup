@@ -8,7 +8,7 @@ month: 04
 day: 24
 published: true
 summary: 妹呀，早知道有scrapy就不用BeautifulSoup自己解析response了，快来学习吧，简单，高效
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

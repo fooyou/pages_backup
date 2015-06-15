@@ -8,7 +8,7 @@ month: 06
 day: 04
 published: true
 summary: 安装过程记录一下
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

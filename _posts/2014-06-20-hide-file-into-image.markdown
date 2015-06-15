@@ -8,7 +8,7 @@ month: 06
 day: 20
 published: true
 summary: 为什么要把文件隐藏在图片里？潜入
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

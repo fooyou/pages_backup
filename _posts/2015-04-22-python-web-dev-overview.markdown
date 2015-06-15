@@ -8,7 +8,7 @@ month: 06
 day: 17
 published: true
 summary: Python的Web开发工具和框架，不看不知道，实在太强悍了。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

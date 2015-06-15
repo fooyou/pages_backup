@@ -8,7 +8,7 @@ month: 09
 day: 19
 published: true
 summary: Vim简单加解密文件
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

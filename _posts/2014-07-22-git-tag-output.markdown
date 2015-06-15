@@ -2,13 +2,13 @@
 layout: post
 title: git tag 导出
 category: Document
-tags: less sass windows
+tags: git
 year: 2014
 month: 06
 day: 23
 published: true
 summary: git的tag标签操作
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

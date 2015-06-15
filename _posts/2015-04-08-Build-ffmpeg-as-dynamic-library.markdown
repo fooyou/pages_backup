@@ -8,7 +8,7 @@ month: 04
 day: 08
 published: true
 summary: ubutnu中使用动态链接库的场景 
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

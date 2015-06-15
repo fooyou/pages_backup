@@ -8,7 +8,7 @@ month: 06
 day: 17
 published: true
 summary: Ubuntu系统修改系统环境变量的最好方法是在/etc/profile.d/文件夹下编写sh文件，而非直接修改/etc/profile文件。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

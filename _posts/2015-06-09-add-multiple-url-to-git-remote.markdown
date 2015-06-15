@@ -8,7 +8,7 @@ month: 06
 day: 09
 published: true
 summary: 有时git仓库需要push到多个git server上，比如同时推送到github和bitbucket上，本文将讲述如何做。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

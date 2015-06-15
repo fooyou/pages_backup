@@ -8,7 +8,7 @@ month: 04
 day: 09
 published: true
 summary: pickle模块将对象序列化到文件。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

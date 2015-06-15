@@ -8,7 +8,7 @@ month: 06
 day: 18
 published: true
 summary: vi linux程序员编写代码神器
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

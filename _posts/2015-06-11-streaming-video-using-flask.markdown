@@ -8,7 +8,7 @@ month: 06
 day: 11
 published: true
 summary: 就算是前端的业余学习日记吧。
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

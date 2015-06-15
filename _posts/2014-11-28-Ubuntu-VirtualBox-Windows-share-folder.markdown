@@ -8,7 +8,7 @@ month: 11
 day: 28
 published: true
 summary: Ubuntu下，和VirtualBox下的Windows系统共享文件夹 
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

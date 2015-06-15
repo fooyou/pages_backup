@@ -8,7 +8,7 @@ month: 12
 day: 11
 published: true
 summary: Ubuntu下，Eclipse通过代理怎么也连不上网络，如何解决？ 
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 

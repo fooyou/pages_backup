@@ -8,7 +8,7 @@ month: 06
 day: 10
 published: true
 summary: Python Flask实现的网络视频直播
-image: first_post.svg
+image: pirates.svg
 comment: true
 ---
 
