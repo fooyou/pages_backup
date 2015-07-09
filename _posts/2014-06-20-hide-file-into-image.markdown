@@ -2,7 +2,7 @@
 layout: post
 title: 将文件隐藏在图片中的方法（linux/windows）
 category: Document
-tags: iamge
+tags: image
 year: 2014
 month: 06
 day: 20
