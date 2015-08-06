@@ -388,6 +388,9 @@ $ gprof -Q test gmon.out > analysis.txt
 ### 参考：
 
 > http://www.cnblogs.com/rocketfan/archive/2009/11/15/1603465.html
+
 > http://www.thegeekstuff.com/2012/08/gprof-tutorial/
+
 > http://blog.csdn.net/leichelle/article/details/8208530
+
 > http://www.ibm.com/developerworks/cn/linux/l-gnuprof.html

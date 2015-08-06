@@ -1,13 +1,65 @@
 ---
 layout: post
-title: python使用pdb调试
+title: Git通过代理访问Github
 category: Document
-tags: python debug
-year: 2014
+tags: git github
+year: 2012
 month: 05
 day: 13
 published: true
-summary: 对于从Windows迁移来的开发者而言在Terminal里进行调试是很别扭的事，本文介绍如何使用pdb对python代码进行调试。
+summary: 公司代理如何拥抱github，使用ssh协议代理喽
 image: pirates.svg
 comment: true
 ---
+
+网络代理下，用git直接与github仓库对接，就是不好用，因为：
+
+1. 
+2. 
+
+解决方法：
+
+__ssh协议代理__
+
+前提准备：
+
+- git
+- ssh
+
+步骤如下：
+
+1. 配置.ssh/config:
+
+```
+$ vi ~/.ssh/config
+```
+
+写下如下配置项：
+
+```
+Host github.com
+Hostname ssh.github.com
+Port 443
+ProxyCommand ~/.ssh/ssh-https-tunnel %h %p
+```
+
+2. 下载ssh-https-tunel，可从http://zwitterion.org/software/ssh-https-tunnel/ssh-https-tunnel下载，保存到~/.ssh下，添加可执行权限。
+
+3. 修改host，port，user，pass：
+
+```
+# Proxy details
+my $host = "proxy.xxx.com";
+my $port = 8000;
+
+# Basic Proxy Authentication - leave empty if you don't need it
+my $user = "usr";
+my $pass = "passwd";
+
+```
+
+4. 用git 对接你的github仓库吧：
+
+```
+$ git clone git@github.com:fooyou/jekyll-bootstrap.git
+```
