@@ -33,3 +33,5 @@ export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip-packages
 ```
 
 这样，你的pip会像maven一样工作了。
+
+> PS: pip7.0默认就有Cache了，不需要配置了。
