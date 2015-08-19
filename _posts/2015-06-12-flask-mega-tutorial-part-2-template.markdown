@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Flask系列教程之一：Hello World
+title: Flask系列教程之二：Template
 category: Document
 tags: flask
 year: 2015

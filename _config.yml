@@ -6,3 +6,5 @@ redcarpet:
 # markdown: kramdown
 highlighter: pygments
 permalink: /blog/:title
+paginate: 15     # 每15篇分页
+paginate_path: "page:num"

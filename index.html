@@ -2,7 +2,8 @@
 layout: layout
 title: "书亚博园"
 ---
-{% for post in site.posts offset: 0 limit: 50 %}
+
+{% for post in paginator.posts %}
 <div class="row">
     <div class="span7">
         <div class="row">
@@ -28,3 +29,25 @@ title: "书亚博园"
     </div>
 </div>
 {% endfor %}
+
+<!-- 分页 -->
+{% if paginator.total_pages > 1 %}
+{% if paginator.previous_page %}
+<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">上一页</a>
+{% endif %}
+
+{% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+        <span class="active">{{ page }} </span>
+    {% else if page == 1 %}
+        <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+{% endfor %}
+
+{% if paginator.next_page %}
+<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页</a>
+{% endif %}
+{% endif %}
+
