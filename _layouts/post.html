@@ -5,7 +5,9 @@ layout: default
 <link rel="stylesheet" href="/css/pygments/trac.css">
 
 <!-- 添加公式支持 -->
+{% if page.latex == true %}
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+{% endif %}
 
 <div class="content">
     {% include post_header.html %}

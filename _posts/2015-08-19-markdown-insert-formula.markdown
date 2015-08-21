@@ -10,6 +10,7 @@ published: true
 summary: 就是不愿意在markdown中引入图片，尤其数学公式，于是网搜了一下方法。
 image: pirates.svg
 comment: true
+latex: true
 ---
 
 去他的Office，自使用Markdown书写文档以来，一直乐在其中，只有一点就是导入图片的问题，像流程图啊，公式啊什么都得用其他图形工具做好后，然后上传到某个服务器上，然后在Markdown里引用。非常麻烦。不过话说回来，如果使用Office不也是这个过程吗？更何况Markdown可直接发布在网页上呢！
@@ -28,7 +29,7 @@ Google Chart API:
 
 一个例子：
 
-```
+```html
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;">
 ```
 
@@ -42,13 +43,13 @@ Google Chart API:
 
 forkosh API:
 
-```
+```html
 <img src="http://www.forkosh.com/mathtex.cgi? 在此处插入Latex公式">
 ```
 
 例子：
 
-```
+```html
 <img src="http://www.forkosh.com/mathtex.cgi? \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}">
 ```
 
@@ -86,3 +87,9 @@ $$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
 这就是你想要的有木有？很帅，有木有？！
 
 > 参考： http://blog.csdn.net/xiahouzuoxin/article/details/26478179
+
+有关LaTeX公式的写法，请参照：
+
+> https://zh.wikibooks.org/wiki/LaTeX/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F
+
+
