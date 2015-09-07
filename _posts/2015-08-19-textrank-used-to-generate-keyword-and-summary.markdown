@@ -30,7 +30,7 @@ _PageRank的专利权属于斯坦福大学_
 假设一个由4个页面组成的小团体：A，B，C，D。如果所有页面都链接到A，如下图示：
 
 ```
-{% dot %}
+{{ digraph }}
 rankdir="TD"
 bgcolor="transparent";
 node [color="#dddddd" fontcolor="#dddddd"]
@@ -38,7 +38,7 @@ edge [color="#dddddd"]
 B -> A;
 C -> A;
 D -> A;
-{% enddot %}
+{{ enddigraph }}
 ```
 
 _图1:_
@@ -50,7 +50,7 @@ $$ PR(A) = PR(B) + PR(C) + PR(D) $$
 继续假设B也有链接到C，并且D也有链接到包括A的3个页面。如下图示：
 
 ```
-{% dot simple_img_2 %}
+{{ digraph 2 }}
 bgcolor="transparent";
 node [color="#dddddd" fontcolor="#dddddd"]
 edge [color="#dddddd"]
@@ -61,7 +61,7 @@ C -> A;
 D -> A;
 D -> B;
 D -> C;
-{% enddot %}
+{{ enddigraph }}
 ```
 
 _图2:_
