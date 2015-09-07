@@ -29,7 +29,7 @@ latex: false
 
 FFcast可以使用户选择屏幕一块区域并使用第三方工具比如ffmpeg进行屏幕录像。
 
-ffcast是Arch linux社区的一些黑客的荣耀作品，可以在github上找到[ffcast](https://github.com/lolilolicon/FFcast2)，它只依赖于`bash`和`ffmpeg`，并使用[`xrectsel`](https://github.com/lolilolicon/xrectsel)进行矩形选择。
+ffcast是Arch linux社区的一些黑客的荣耀作品，可以在github上找到[ffcast](https://github.com/lolilolicon/FFcast2)，它只依赖于`bash`和`ffmpeg`，并使用[xrectsel](https://github.com/lolilolicon/xrectsel)进行矩形选择。
 
 还可以对ffmpeg命令进行扩展。我使用`-r 15`来进行每秒种捕获15帧，`-codec:v huffyuv`进行无损录制。
 
