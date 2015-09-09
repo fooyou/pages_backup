@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="404px" height="564px" viewBox="0 0 404 564" xmlns="http://www.w3.org/2000/svg" version="1.1">
-<title>Christian Cross</title>
-	<rect fill="white" x="404" y="564" width="560" height="560"/>
-	<path transform="translate(2,2) scale(2,2)" d="M0,80L80,80L80,0L120,0L120,80L200,80L200,120L120,120L120,280L80,280L80,120L0,120z" fill="#eeeeee"/>
-</svg>
