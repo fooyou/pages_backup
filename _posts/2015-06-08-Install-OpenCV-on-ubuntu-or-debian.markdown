@@ -2,7 +2,7 @@
 layout: post
 title: 在Ubuntu或Debian上安装OpenCV
 category: Document
-tags: python html jinja2
+tags: opencv linux
 year: 2015
 month: 06
 day: 04
