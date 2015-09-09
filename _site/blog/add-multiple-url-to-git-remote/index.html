@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>为git仓库添加多个远程url地址</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/add-multiple-url-to-git-remote';
+	// var disqus_url = 'http://fooyou.github.io/blog/add-multiple-url-to-git-remote';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>为git仓库添加多个远程url地址</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-06-09 <small>. Document . <a href="http://fooyou.github.io/blog/add-multiple-url-to-git-remote#disqus_thread" data-disqus-identifier="/blog/add-multiple-url-to-git-remote">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/git" title="按标签 &quot;git&quot;浏览"><u>git</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/Install-OpenCV-on-ubuntu-or-debian" title="上一篇: 在Ubuntu或Debian上安装OpenCV"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/ShenYang-Social-Insurance" title="下一篇: 沈阳市城镇居民基本医疗保险参保就医指南"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <h2 id="前言">前言</h2>
+
+<p>一般来说，我们为git增加远程库，一般都是:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote add origin &lt;url&gt;
+</code></pre></div>
+<p>但是你可能想要把你的本地的git库，既push到github上，又push到开源中国的Git@OSC上，怎么解决呢。</p>
+
+<p>有人可能会用两个甚至多个远程库，即再添加一个远程库</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote add origin2
+</code></pre></div>
+<p>但是这个方法很低效，因为你要git push 两次才能完成push到两个库。</p>
+
+<p>其实还有一个方法，git的一个远程库 可以对应多个地址，即我能让远程库origin拥有多个url地址。</p>
+
+<p>方法如下：</p>
+
+<hr>
+
+<h2 id="使用流程">使用流程</h2>
+
+<p>首先，我们从零开始， 
+假设你现在想要增加3个远程库地址，分别为 :</p>
+
+<p><a href="https://git.oschina.net/shede333/swioslibary.git">https://git.oschina.net/shede333/swioslibary.git</a></p>
+
+<p><a href="https://git.oschina.net/shede333/swscrollbar.git">https://git.oschina.net/shede333/swscrollbar.git</a></p>
+
+<p><a href="https://github.com/shede333/CoreAnimationTestSW.git">https://github.com/shede333/CoreAnimationTestSW.git</a></p>
+
+<p>首先，先增加第一个地址:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote add origin &lt;url1&gt; 
+</code></pre></div>
+<p>然后增加第二个地址:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote set-url --add origin &lt;url2&gt; 
+</code></pre></div>
+<p>增加第三个地址:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote set-url --add origin &lt;url3&gt; 
+</code></pre></div>
+<p>… 依次类推</p>
+
+<p>这样就完成了添加多个地址到origin库中了， 
+以后只要使用git push origin master 就可以一次性push到3各库里面了(使用git push也可)</p>
+
+<h2 id="原理解析">原理解析</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">git remote set-url --add origin
+</code></pre></div>
+<p>就是往当前git项目的config文件里增加一行记录 
+config文件打开方式有两种：</p>
+
+<ol>
+<li>使用命令git config -e</li>
+<li>在当前git项目的根目录下，文件位于 .git/config (.git目录为隐藏文件)</li>
+</ol>
+
+<p>你每执行一次 <code>git remote set-url --add origin</code> 就会增加一行。</p>
+
+<p><code>git remote -v</code>: 显示当前所有远程库的详细信息，显示格式为 远程库名字 url连接(类型)</p>
+
+<p>你直接在config里面直接添加url来修改也是可以的，不必去执行git命令。</p>
+
+<p><strong><em>注意</em></strong></p>
+
+<p>使用git push origin master时，你可以push到origin的多个url地址， </p>
+
+<p>但是使用 git pull时，只能拉取origin里的一个url地址(即fetch-url，如上图)，这个fetch-url默认为 ** 你添加的到origin的第一个地址**， </p>
+
+<p>如果你想更改，只需要更改config文件里，那三个url的顺序即可，fetch-url会直接对应排行第一的那个utl连接。</p>
+
+<blockquote>
+<p>参考：<a href="http://my.oschina.net/shede333/blog/299032">http://my.oschina.net/shede333/blog/299032</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/Install-OpenCV-on-ubuntu-or-debian" title="上一篇: 在Ubuntu或Debian上安装OpenCV"><i class="icon-chevron-left"></i></a>          <a href="/blog/ShenYang-Social-Insurance" title="下一篇: 沈阳市城镇居民基本医疗保险参保就医指南"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/Install-OpenCV-on-ubuntu-or-debian" title="Previous Post: 在Ubuntu或Debian上安装OpenCV">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/ShenYang-Social-Insurance" title="Next Post: 沈阳市城镇居民基本医疗保险参保就医指南">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Mac下Postgres得安装和使用</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/Use-postgres-on-mac-ox-x';
+	// var disqus_url = 'http://fooyou.github.io/blog/Use-postgres-on-mac-ox-x';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>Mac下Postgres得安装和使用</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-07-19 <small>. Document . <a href="http://fooyou.github.io/blog/Use-postgres-on-mac-ox-x#disqus_thread" data-disqus-identifier="/blog/Use-postgres-on-mac-ox-x">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/postgres" title="按标签 &quot;postgres&quot;浏览"><u>postgres</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/pip-cahce-method" title="上一篇: pip如何使用cache"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/web-stress-test" title="下一篇: 网站压力测试之——如何生成百万级的http请求"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <h2 id="安装与配置">安装与配置</h2>
+
+<p>在 mac 下，可以利用 homebrew 直接安装 PostgreSQL：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">brew install postgresql -v
+</code></pre></div>
+<p>稍等片刻，PostgreSQL 就安装完成。接下来就是初始数据库，在终端执行一下命令，初始配置 PostgreSQL：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">initdb /usr/local/var/postgres -E utf8
+</code></pre></div>
+<p>上面指定 &quot;/usr/local/var/postgres&quot; 为 PostgreSQL 的配置数据存放目录，并且设置数据库数据编码是 utf8，更多配置信息可以 &quot;initdb --help&quot; 查看。</p>
+
+<p>设成开机启动 PostgreSQL：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+</code></pre></div>
+<p>启动 PostgreSQL：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+</code></pre></div>
+<p>关闭 PostgreSQL：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pg_ctl -D /usr/local/var/postgres stop -s -m fast
+</code></pre></div>
+<h2 id="创建一个-postgresql-用户">创建一个 PostgreSQL 用户</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">createuser username -P
+#Enter password for new role:
+#Enter it again:
+</code></pre></div>
+<p>上面的 username 是用户名，回车输入 2 次用户密码后即用户创建完成。更多用户创建信息可以 &quot;createuser --help&quot; 查看。</p>
+
+<h2 id="创建数据库">创建数据库</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">createdb dbname -O username -E UTF8 -e
+</code></pre></div>
+<p>上面创建了一个名为 dbname 的数据库，并指定 username 为改数据库的拥有者（owner），数据库的编码（encoding）是 UTF8，参数 &quot;-e&quot; 是指把数据库执行操作的命令显示出来。</p>
+
+<p>更多数据库创建信息可以 &quot;createdb --help&quot; 查看。</p>
+
+<h2 id="连接数据库">连接数据库</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">psql -U username -d dbname -h 127.0.0.1
+</code></pre></div>
+<h2 id="postgresql-数据库操作">PostgreSQL 数据库操作</h2>
+
+<p>显示已创建的数据库：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">\l
+</code></pre></div>
+<p>在不连接进 PostgreSQL 数据库的情况下，也可以在终端上查看显示已创建的列表：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">psql -l
+</code></pre></div>
+<p>连接数据库</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">\c dbname
+</code></pre></div>
+<p>显示数据库表</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">\d
+</code></pre></div>
+<p>创建一个名为 test 的表</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">CREATE TABLE test(id int, text VARCHAR(50));
+</code></pre></div>
+<p>插入一条记录</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">INSERT INTO test(id, text) VALUES(1, &#39;sdfsfsfsdfsdfdf&#39;);
+</code></pre></div>
+<p>查询记录</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">SELECT * FROM test WHERE id = 1;
+</code></pre></div>
+<p>更新记录</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">UPDATE test SET text = &#39;aaaaaaaaaaaaa&#39; WHERE id = 1;
+</code></pre></div>
+<p>删除指定的记录</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">DELETE FROM test WHERE id = 1;
+</code></pre></div>
+<p>删除表</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">DROP TABLE test;
+</code></pre></div>
+<p>删除数据库</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">DROP DATABASE dbname;
+</code></pre></div>
+<p>或者利用 dropdb 指令，在终端上删除数据库</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">dropdb -U user dbname
+</code></pre></div>
+<p>下面是自用的 PostgreSQL 的 php 操作类：</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;HOST&quot;</span><span class="p">,</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5432</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;DBNAME&quot;</span><span class="p">,</span> <span class="s2">&quot;dbname&quot;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s2">&quot;PASSWORD&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Ext_Pgsql</span> <span class="p">{</span>
+
+    <span class="c1">//单例</span>
+    <span class="k">private</span> <span class="k">static</span> <span class="nv">$instance</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$conn</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">conn</span> <span class="o">=</span> <span class="nb">pg_connect</span><span class="p">(</span><span class="s2">&quot;host=&quot;</span> <span class="o">.</span> <span class="nx">HOST</span> <span class="o">.</span> <span class="s2">&quot; port=&quot;</span> <span class="o">.</span> <span class="nx">PORT</span> <span class="o">.</span> <span class="s2">&quot; dbname=&quot;</span> <span class="o">.</span> <span class="nx">DBNAME</span> <span class="o">.</span> <span class="s2">&quot; user=&quot;</span> <span class="o">.</span> <span class="nx">USER</span> <span class="o">.</span> <span class="s2">&quot; password=&quot;</span> <span class="o">.</span> <span class="nx">PASSWORD</span><span class="p">)</span> <span class="k">or</span> <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Connect Failed : &#39;</span><span class="o">.</span> <span class="nb">pg_last_error</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">__destruct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="o">@</span><span class="nb">pg_close</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">conn</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 单例模式</span>
+<span class="sd">     * @param $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">getInstance</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$instance</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nx">self</span><span class="o">::</span><span class="nv">$instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">self</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="o">::</span><span class="nv">$instance</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 获取记录</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">fetchRow</span><span class="p">(</span><span class="nv">$sql</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$ret</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="nv">$rs</span> <span class="o">=</span> <span class="nb">pg_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$ret</span> <span class="o">=</span> <span class="nb">pg_fetch_all</span><span class="p">(</span><span class="nv">$rs</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$ret</span><span class="p">)</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">array</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$ret</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 执行指令</span>
+<span class="sd">     * @param string $sql</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">query</span><span class="p">(</span><span class="nv">$sql</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nb">pg_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nv">$result</span> <span class="p">)</span>
+            <span class="k">die</span><span class="p">(</span><span class="s2">&quot;SQL : </span><span class="si">{</span><span class="nv">$sql</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="o">.</span> <span class="nb">pg_last_error</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 获取一条记录</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">fetchOne</span><span class="p">(</span><span class="nv">$sql</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$ret</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+        <span class="nv">$rs</span> <span class="o">=</span> <span class="nb">pg_query</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">conn</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$ret</span> <span class="o">=</span> <span class="nb">pg_fetch_all</span><span class="p">(</span><span class="nv">$rs</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="o">!</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$ret</span><span class="p">)</span> <span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">array</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">current</span><span class="p">(</span><span class="nv">$ret</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</code></pre></div>
+<h2 id="一些问题">一些问题</h2>
+
+<h3 id="postgresql-9-2-版本升级到-9-3-1-版本后的数据兼容问题">PostgreSQL 9.2 版本升级到 9.3.1 版本后的数据兼容问题</h3>
+
+<p>连接 PostgreSQL 时报以下错误：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">psql: could not connect to server: Connection refused
+Is the server running on host &quot;127.0.0.1&quot; and accepting
+TCP/IP connections on port 5432?
+</code></pre></div>
+<p>打开 PostgreSQL 的服务日志发现是 PostgreSQL 9.2 版本升级到 9.3.1 版本后的数据兼容问题：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">tail -f /usr/local/var/postgres/server.log
+FATAL:  database files are incompatible with server
+DETAIL:  The data directory was initialized by PostgreSQL version 9.2, which is not compatible with this version 9.3.1.
+</code></pre></div>
+<p>对于版本的数据升级问题，PostgreSQL 提供了 pg_upgrade 来做版本后的数据迁移，用法如下：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pg_upgrade -b 旧版本的bin目录 -B 新版本的bin目录 -d 旧版本的数据目录 -D 新版本的数据目录 [其他选项...]
+</code></pre></div>
+<p>数据迁移前，记得先关闭 PostgreSQL 的 postmaster 服务，不然会报以下错误：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">There seems to be a postmaster servicing the new cluster.
+Please shutdown that postmaster and try again.
+Failure, exiting
+</code></pre></div>
+<p>利用 pg_ctl 关闭 postmaster：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pg_ctl -D /usr/local/var/postgres stop
+</code></pre></div>
+<p>Mac 下也可以这样关闭：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+</code></pre></div>
+<p>首先备份就版本的数据（默认是在 /usr/local/var/postgres 目录）：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">mv /usr/local/var/postgres /usr/local/var/postgres.old
+</code></pre></div>
+<p>利用 initdb 命令再初始一个数据库文件：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">initdb /usr/local/var/postgres -E utf8 --locale=zh_CN.UTF-8
+</code></pre></div>
+<p><em>NOTE：</em>记得加 &quot;--locale=zh_CN.UTF-8&quot; 选项，不然会报以下错误：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">lc_collate cluster values do not match:  old &quot;zh_CN.UTF-8&quot;, new &quot;en_US.UTF-8&quot;
+</code></pre></div>
+<p>最后运行 pg_upgrade 进行数据迁移：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">pg_upgrade -b /usr/local/Cellar/postgresql/9.2.4/bin/ -B /usr/local/Cellar/postgresql/9.3.1/bin/ -d /usr/local/var/postgres.old -D /usr/local/var/postgres -v
+</code></pre></div>
+<blockquote>
+<p>参见：<a href="http://dhq.me/mac-postgresql-install-usage">http://dhq.me/mac-postgresql-install-usage</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/pip-cahce-method" title="上一篇: pip如何使用cache"><i class="icon-chevron-left"></i></a>          <a href="/blog/web-stress-test" title="下一篇: 网站压力测试之——如何生成百万级的http请求"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/pip-cahce-method" title="Previous Post: pip如何使用cache">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/web-stress-test" title="Next Post: 网站压力测试之——如何生成百万级的http请求">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

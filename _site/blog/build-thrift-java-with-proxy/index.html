@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>elementary os 网络代理下 build thrift</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/build-thrift-java-with-proxy';
+	// var disqus_url = 'http://fooyou.github.io/blog/build-thrift-java-with-proxy';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>elementary os 网络代理下 build thrift</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-08-20 <small>. Document . <a href="http://fooyou.github.io/blog/build-thrift-java-with-proxy#disqus_thread" data-disqus-identifier="/blog/build-thrift-java-with-proxy">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/linux" title="按标签 &quot;linux&quot;浏览"><u>linux</u></a>     <a href="/tags/thrift" title="按标签 &quot;thrift&quot;浏览"><u>thrift</u></a>     <a href="/tags/build" title="按标签 &quot;build&quot;浏览"><u>build</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/vim-terminal" title="上一篇: Vim工作时和Terminal的切换"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/nrg-2-iso" title="下一篇: nrg转换成iso"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <p>之前就在开发机上Build过，好像遇到什么代理的问题了，但很快解决了，没有留下什么记录。等过了好长时间又需要用到thrift，这时环境变了，一切都得重来，依稀记得设置的方式，却又遇到不同的问题。</p>
+
+<p>我下载的版本是0.9.2的Release包，所以不用安装Boost。</p>
+
+<p>安装Ubuntu需要的编译环境（是的elementary os来自ubuntu）：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libboost-system-dev libboost-filesystem-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+</code></pre></div>
+<p>thrift会自动查找当前的开发语言环境，因为我只需用到python、java和C++并且环境都配好了，所以直接Configure：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ ./configure
+</code></pre></div>
+<p><em>代理配置（我没有用这种方式）</em></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ ./configure --with-java ANT_FLAGS=&#39;-Dproxy.enabled=1 -Dproxy.host=proxy.xxx.com -Dproxy.port=8080&#39;
+</code></pre></div>
+<p>没有问题，然后：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ make
+</code></pre></div>
+<p>遇到问题了，执行到 <code>mvn.ant.tasks.download</code> 不动了，肯定是代理问题，按记忆找到了 ./thrift-0.9.2/lib/java/build.pom第292行的proxy设置，修改后make成功。</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">&quot;proxy&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;setproxy</span> <span class="na">proxyhost=</span><span class="s">&quot;proxy.xxx.com&quot;</span> <span class="na">proxyport=</span><span class="s">&quot;8080&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+</code></pre></div>
+<p>该安装了：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">sudo make install
+</code></pre></div>
+<p>本以为没问题了，可是就在<code>mvn.ant.tasks.download</code>后，有个下载mvn依赖的<code>mvn.init</code>停住不动了，肯定又是代理的事，可是在 ~/.m2/settings.xml里我已经配置了代理啊，一直再用啊～～</p>
+
+<p>然后终于看到了<code>sudo</code>root用户啊，于是在root用户下创建了 ~/.m2/settings.xml，OK万事大吉！</p>
+
+<p>settings.xml内容如下：</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;settings&gt;</span>
+    <span class="nt">&lt;proxies&gt;</span>
+        <span class="nt">&lt;proxy&gt;</span>
+            <span class="nt">&lt;active&gt;</span>true<span class="nt">&lt;/active&gt;</span>
+            <span class="nt">&lt;protocol&gt;</span>http<span class="nt">&lt;/protocol&gt;</span>
+            <span class="nt">&lt;host&gt;</span>proxy.xxx.com<span class="nt">&lt;/host&gt;</span>
+            <span class="nt">&lt;port&gt;</span>8080<span class="nt">&lt;/port&gt;</span>
+            <span class="c">&lt;!--</span>
+<span class="c">            &lt;username&gt;proxyuser&lt;/username&gt;</span>
+<span class="c">            &lt;password&gt;somepassword&lt;/password&gt;</span>
+<span class="c">            &lt;nonProxyHosts&gt;www.google.com|*.somewhere.com&lt;/nonProxyHosts&gt;</span>
+<span class="c">            --&gt;</span>
+        <span class="nt">&lt;/proxy&gt;</span>
+    <span class="nt">&lt;/proxies&gt;</span>
+    <span class="nt">&lt;profiles&gt;</span>
+        <span class="nt">&lt;profile&gt;</span>
+            <span class="nt">&lt;id&gt;</span>jdk-1.8<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;activation&gt;</span>
+                <span class="nt">&lt;activeByDefault&gt;</span>true<span class="nt">&lt;/activeByDefault&gt;</span>
+                <span class="nt">&lt;jdk&gt;</span>1.8<span class="nt">&lt;/jdk&gt;</span>
+            <span class="nt">&lt;/activation&gt;</span>
+            <span class="nt">&lt;properties&gt;</span>
+                <span class="nt">&lt;maven.compiler.source&gt;</span>1.8<span class="nt">&lt;/maven.compiler.source&gt;</span>
+                <span class="nt">&lt;maven.compiler.target&gt;</span>1.8<span class="nt">&lt;/maven.compiler.target&gt;</span>
+                <span class="nt">&lt;maven.compiler.compilerVersion&gt;</span>1.8<span class="nt">&lt;/maven.compiler.compilerVersion&gt;</span>
+            <span class="nt">&lt;/properties&gt;</span>
+        <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;/profiles&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</code></pre></div>
+<p>总之好用了。</p>
+
+<blockquote>
+<p>参考：<a href="https://thrift.apache.org/docs/BuildingFromSource">https://thrift.apache.org/docs/BuildingFromSource</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/vim-terminal" title="上一篇: Vim工作时和Terminal的切换"><i class="icon-chevron-left"></i></a>          <a href="/blog/nrg-2-iso" title="下一篇: nrg转换成iso"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/vim-terminal" title="Previous Post: Vim工作时和Terminal的切换">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/nrg-2-iso" title="Next Post: nrg转换成iso">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>SPARQL 练习</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/SPARQL-exercise';
+	// var disqus_url = 'http://fooyou.github.io/blog/SPARQL-exercise';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>SPARQL 练习</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2014-10-08 <small>. Document . <a href="http://fooyou.github.io/blog/SPARQL-exercise#disqus_thread" data-disqus-identifier="/blog/SPARQL-exercise">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/Semantic-Web" title="按标签 &quot;Semantic-Web&quot;浏览"><u>Semantic-Web</u></a>     <a href="/tags/SPARQL" title="按标签 &quot;SPARQL&quot;浏览"><u>SPARQL</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/SPARQL-1.1-Overview" title="上一篇: SPARQL 1.1概述"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/Login-ubuntu-with-root" title="下一篇: Ubuntu开启root账户登录的方法"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <h1 id="sparql-练习">SPARQL 练习</h1>
+
+<p><em>看完《理解SPARQL》做了如下练习，使用dbpedia在线SPARQL进行，网址：<a href="http://dbpedia.org/snorql/">http://dbpedia.org/snorql/</a></em></p>
+
+<p>练习前要先了解dbpedia的本体、属性、资源等</p>
+
+<table><thead>
+<tr>
+<th>名称</th>
+<th>URI</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>本体</td>
+<td><a href="http://dbpedia.org/ontology/">http://dbpedia.org/ontology/</a></td>
+<td><a href="http://mappings.dbpedia.org/server/ontology/classes/">本体类</a></td>
+</tr>
+<tr>
+<td>属性</td>
+<td><a href="http://dbpedia.org/property/">http://dbpedia.org/property/</a></td>
+<td>描述一个本体属性</td>
+</tr>
+<tr>
+<td>资源</td>
+<td><a href="http://dbpedia.org/resource/">http://dbpedia.org/resource/</a></td>
+<td>任何东西都是资源</td>
+</tr>
+</tbody></table>
+
+<p>要查找一个linked data，必须首先知道其本体相关类和其属性定义，否则就无从查起。</p>
+
+<h2 id="查找中国所有的省份">查找中国所有的省份</h2>
+
+<p>在dbpedia中搜索河南（<a href="http://dbpedia.org/page/Henan%EF%BC%89%E8%83%BD%E7%9C%8B%E5%88%B0%E5%AF%B9%E6%B2%B3%E5%8D%97%E7%9C%81%E7%9A%84%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E5%B1%9E%E6%80%A7%E6%98%AF%EF%BC%9A">http://dbpedia.org/page/Henan）能看到对河南省的其中一个属性是：</a><http://dbpedia.org/class/yago/ProvincesOfThePeople'sRepublicOfChina>，那么利用这个属性我们可以找到所有的省份：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PREFIX dbp_yago: &lt;&lt;http://dbpedia.org/class/yago/&gt;
+
+SELECT ?p ?name WHERE {
+    ?p a dbp_yago:ProvincesOfThePeople&#39;sRepublicOfChina
+    ?p rdfs:label ?name FILTER (LANG(?name) = &#39;zh&#39;)
+}
+</code></pre></div>
+<h2 id="1-找出中国所有城市">1.找出中国所有城市</h2>
+
+<p>首先我们要找的内容是城市，可以在DBPedia的本体库中找到类：City，而China已经是dbpedia resource中的结点了。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PREFIX : &lt;http://dbpedia.org/resource/&gt;
+PREFIX dbpo: &lt;http://dbpedia.org/ontology/&gt;
+
+SELECT ?city, ?city_zh_name { 
+    ?city a dbpo:City; dbpo:country :China .
+    ?city rdfs:label ?city_zh_name FILTER (LANG(?city_zh_name) = &#39;zh&#39;) .
+}
+ORDER BY ?city
+</code></pre></div>
+<p>第1行对resource的PREFIX，没有命名，那么查询默认空间就是resource，第2行定义了dbpo为DBPedia的本体服务，select语句定义了两个变量<code>city</code>和<code>city_zh_name</code>。</p>
+
+<p><code>city</code>是类型为dbpedia-owl(<a href="http://dbpedia.org/ontology/City">http://dbpedia.org/ontology/City</a>)属性dbpedia-owl:country所属国家为<a href="http://dbpedia.org/resource/China">http://dbpedia.org/resource/China</a>(:China)的城市，</p>
+
+<p><code>city_zh_name</code>意义为城市的中文名字，它是<code>city</code>的rdfs:label属性中的LANG()为&#39;zh&#39;的部分。</p>
+
+<p>结果如下：</p>
+
+<table><thead>
+<tr>
+<th>city</th>
+<th>city_zh_name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/%25C3%259Cr%25C3%25BCmqi">:%C3%9Cr%C3%BCmqi</a></td>
+<td>&quot;乌鲁木齐市&quot;@zh</td>
+</tr>
+<tr>
+<td><a href="http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/Alashankou">:Alashankou</a></td>
+<td>&quot;阿拉山口市&quot;@zh</td>
+</tr>
+<tr>
+<td><a href="">:Altay_City</a></td>
+<td>&quot;阿勒泰市&quot;@zh</td>
+</tr>
+<tr>
+<td><a href="http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/Altay_City">:Anda,_Heilongjiang</a></td>
+<td>&quot;安达市&quot;@zh</td>
+</tr>
+<tr>
+<td><a href="http://dbpedia.org/snorql/?describe=http%3A//dbpedia.org/resource/Anning%2C_Yunnan">:Anning,_Yunnan</a></td>
+<td>&quot;安宁市&quot;@zh</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody></table>
+
+<h2 id="2-查找河南省所有的城市">2.查找河南省所有的城市</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">PREFIX : &lt;http://dbpedia.org/resource/&gt;
+PREFIX dbpo: &lt;http://dbpedia.org/ontology/&gt;
+
+SELECT ?city, ?city_zh_name { 
+    ?city a dbpo:City; dbpo:isPartOf :Henan .
+    ?city rdfs:label ?city_zh_name FILTER (LANG(?city_zh_name) = &#39;zh&#39;) .
+}
+ORDER BY ?city
+</code></pre></div>
+<p>查看dbpedia的owl:class:City，可以发现其属性有一个叫dbpedia-owl:isPartOf，</p>
+
+<h2 id="1-查找所有在濮阳出生的人">1. 查找所有在濮阳出生的人</h2>
+
+<p>&lt;未完待续&gt;</p>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/SPARQL-1.1-Overview" title="上一篇: SPARQL 1.1概述"><i class="icon-chevron-left"></i></a>          <a href="/blog/Login-ubuntu-with-root" title="下一篇: Ubuntu开启root账户登录的方法"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/SPARQL-1.1-Overview" title="Previous Post: SPARQL 1.1概述">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/Login-ubuntu-with-root" title="Next Post: Ubuntu开启root账户登录的方法">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

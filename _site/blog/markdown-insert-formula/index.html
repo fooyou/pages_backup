@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Markdwon中插入数学公式</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/markdown-insert-formula';
+	// var disqus_url = 'http://fooyou.github.io/blog/markdown-insert-formula';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>Markdwon中插入数学公式</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-08-19 <small>. Document . <a href="http://fooyou.github.io/blog/markdown-insert-formula#disqus_thread" data-disqus-identifier="/blog/markdown-insert-formula">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/markdown" title="按标签 &quot;markdown&quot;浏览"><u>markdown</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/jekyll-blog-paginator" title="上一篇: jekyll博客的分页实现"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/npm-with-proxy" title="下一篇: npm设置代理"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <p>去他的Office，自使用Markdown书写文档以来，一直乐在其中，只有一点就是导入图片的问题，像流程图啊，公式啊什么都得用其他图形工具做好后，然后上传到某个服务器上，然后在Markdown里引用。非常麻烦。不过话说回来，如果使用Office不也是这个过程吗？更何况Markdown可直接发布在网页上呢！</p>
+
+<p>图形的问题可以用graphviz解决，程序员最不怕的就是敲代码，它可以只敲一些代码就可以把各种流程图什么的图形画出来，不怕乱的话，可以直接把生成的svg代码嵌入到markdown里，当然也可以路径引入。</p>
+
+<p>至于公式吗，以下有三个解决方案：</p>
+
+<h2 id="方案一：使用google-chart的服务器">方案一：使用Google Chart的服务器</h2>
+
+<p>Google Chart API:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://chart.googleapis.com/chart?cht=tx&amp;chl= 在此插入Latex公式&quot;</span> <span class="na">style=</span><span class="s">&quot;border:none;&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>一个例子：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://chart.googleapis.com/chart?cht=tx&amp;chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot;</span> <span class="na">style=</span><span class="s">&quot;border:none;&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>效果如下：</p>
+
+<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" style="border:none;"></p>
+
+<p>可是google api是墙外的，不保靠。并且其还是以<img>标签出现的，不利于主题的修改。</p>
+
+<h2 id="方案二：使用forkosh服务器">方案二：使用forkosh服务器</h2>
+
+<p>forkosh API:</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://www.forkosh.com/mathtex.cgi? 在此处插入Latex公式&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>例子：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;http://www.forkosh.com/mathtex.cgi? \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<p>显示结果：</p>
+
+<p><img src="http://www.forkosh.com/mathtex.cgi? \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}"></p>
+
+<h2 id="方案三：使用mathjax引擎">方案三：使用MathJax引擎</h2>
+
+<p>用这个引擎生成的公式不是img，这就是我想要的，可以这样添加公式引擎：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<p>然后写入Tex公式，<code>$$公式$$</code>：表示行间公式；<code>\\(公式\\)</code>：行内公式，一个简单例子：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
+</code></pre></div>
+<p>显示效果如下：</p>
+
+<p>行间：</p>
+
+<p>$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$</p>
+
+<p>行内：</p>
+
+<p>\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)</p>
+
+<p>这就是你想要的有木有？很帅，有木有？！</p>
+
+<blockquote>
+<p>参考： <a href="http://blog.csdn.net/xiahouzuoxin/article/details/26478179">http://blog.csdn.net/xiahouzuoxin/article/details/26478179</a></p>
+</blockquote>
+
+<p>有关LaTeX公式的写法，请参照：</p>
+
+<blockquote>
+<p><a href="https://zh.wikibooks.org/wiki/LaTeX/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">https://zh.wikibooks.org/wiki/LaTeX/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/jekyll-blog-paginator" title="上一篇: jekyll博客的分页实现"><i class="icon-chevron-left"></i></a>          <a href="/blog/npm-with-proxy" title="下一篇: npm设置代理"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/jekyll-blog-paginator" title="Previous Post: jekyll博客的分页实现">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/npm-with-proxy" title="Next Post: npm设置代理">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

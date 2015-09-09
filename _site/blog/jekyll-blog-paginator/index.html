@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jekyll博客的分页实现</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/jekyll-blog-paginator';
+	// var disqus_url = 'http://fooyou.github.io/blog/jekyll-blog-paginator';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>jekyll博客的分页实现</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-08-19 <small>. Document . <a href="http://fooyou.github.io/blog/jekyll-blog-paginator#disqus_thread" data-disqus-identifier="/blog/jekyll-blog-paginator">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/jekyll" title="按标签 &quot;jekyll&quot;浏览"><u>jekyll</u></a>     <a href="/tags/blog" title="按标签 &quot;blog&quot;浏览"><u>blog</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/vim-as-ide" title="上一篇: 使用vim打造IDE"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/markdown-insert-formula" title="下一篇: Markdwon中插入数学公式"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <blockquote>
+<p>引用：<a href="http://segmentfault.com/a/1190000000406015">http://segmentfault.com/a/1190000000406015</a></p>
+</blockquote>
+
+<h2 id="开启分页功能">开启分页功能</h2>
+
+<hr>
+
+<p>首先我们需要在jekyll中开启分页功能，在jekyll的_config.yml中加入分页配置：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">paginate: 5
+paginate_path: &quot;page:num&quot;
+</code></pre></div>
+<p>第一行定义了每页的文章数量，而第二行则定义了在分页的结果，比如在/index.html中使用分页，定义为page:num，则第二页的路径将是/page2/index.html，第三页的路径将是/page3/index.html，以此类推</p>
+
+<p><em>需要注意的几个点：</em></p>
+
+<ul>
+<li>分页只在html文件中起作用</li>
+<li>paginate_path同时定义了需要被分页的文件，本人测试这个叫index.html，具体目录由paginate_path中的路径定义，如果定义的目录没有，则会向上寻找index.html，直到根目录的index.html，具体机制官网上没有详细说，所以还需要进一步实验</li>
+</ul>
+
+<h2 id="使用分页">使用分页</h2>
+
+<hr>
+
+<p>只是开启了分页还没有用，我们需要确实使用到首页之中，在首页(/index.html)中添加如下代码：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">
+</code></pre></div>
+<p>这样，jekyll就会根据paginator来进行分页了，被分出来多少页，就会有多少个页面生成。排1-5的文章就在/index.html中了，而排6-10的文章则在/page2/index.html中，依次类推</p>
+
+<h2 id="换页">换页</h2>
+
+<hr>
+
+<p>只是分页还不够，我们还需要在每个页面上做一个跳转到其他页面的导航，这里需要用到paginator的一些其他属性</p>
+
+<p>首先检测总的页数，如果只有一页，自然就不需要分页了。通过paginator的total_pages属性能判断总页数：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">
+</code></pre></div>
+<p>我们需要一个跳转到上一页的按钮，这个按钮在第一页不需要显示，通过paginator的previous_page属性来判断是否是第一个页面，使用paginator的previous_page_path来输出上一页的路径，注意在前面添加baseurl，并进行一些必要的字符替换：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">
+</code></pre></div>
+<p>接着是生成所有页面的按钮，并使当前页按钮无效化，遍历所有页面，使用paginator的page属性来确定当前页，如果是当前页，则按钮无效，否则使用page{&quot;layout&quot;=&gt;&quot;post&quot;, &quot;title&quot;=&gt;&quot;jekyll博客的分页实现&quot;, &quot;category&quot;=&gt;&quot;Document&quot;, &quot;tags&quot;=&gt;[&quot;jekyll&quot;, &quot;blog&quot;], &quot;year&quot;=&gt;2015, &quot;month&quot;=&gt;7, &quot;day&quot;=&gt;24, &quot;published&quot;=&gt;true, &quot;summary&quot;=&gt;&quot;jekyll本身支持分页功能&quot;, &quot;image&quot;=&gt;&quot;pirates.svg&quot;, &quot;comment&quot;=&gt;true, &quot;url&quot;=&gt;&quot;/blog/jekyll-blog-paginator&quot;, &quot;dir&quot;=&gt;&quot;/blog&quot;, &quot;date&quot;=&gt;2015-08-19 00:00:00 +0800, &quot;id&quot;=&gt;&quot;/blog/jekyll-blog-paginator&quot;, &quot;categories&quot;=&gt;[&quot;document&quot;], &quot;next&quot;=&gt;<Post: /blog/markdown-insert-formula>, &quot;previous&quot;=&gt;<Post: /blog/vim-as-ide>, &quot;path&quot;=&gt;&quot;<em>posts/2015-08-19-jekyll-blog-paginator.markdown&quot;, &quot;content&quot;=&gt;&quot;&gt; 引用：<a href="http://segmentfault.com/a/1190000000406015%5Cn%5Cn##">http://segmentfault.com/a/1190000000406015\n\n##</a> 开启分页功能\n------------\n\n首先我们需要在jekyll中开启分页功能，在jekyll的_config.yml中加入分页配置：\n\n<code>\npaginate: 5\npaginate_path: \&quot;page:num\&quot;\n</code>\n\n第一行定义了每页的文章数量，而第二行则定义了在分页的结果，比如在/index.html中使用分页，定义为page:num，则第二页的路径将是/page2/index.html，第三页的路径将是/page3/index.html，以此类推\n\n</em>需要注意的几个点：<em>\n\n* 分页只在html文件中起作用\n* paginate_path同时定义了需要被分页的文件，本人测试这个叫index.html，具体目录由paginate_path中的路径定义，如果定义的目录没有，则会向上寻找index.html，直到根目录的index.html，具体机制官网上没有详细说，所以还需要进一步实验\n\n## 使用分页\n------------\n\n只是开启了分页还没有用，我们需要确实使用到首页之中，在首页(/index.html)中添加如下代码：\n\n<code>\n{% for post in paginator.posts %}\n    &lt;a href=\&quot;{{ post.url }}\&quot;&gt;{{ post.title }}&lt;/a&gt;\n{% endfor %}\n</code>\n\n这样，jekyll就会根据paginator来进行分页了，被分出来多少页，就会有多少个页面生成。排1-5的文章就在/index.html中了，而排6-10的文章则在/page2/index.html中，依次类推\n\n## 换页\n-------------\n\n只是分页还不够，我们还需要在每个页面上做一个跳转到其他页面的导航，这里需要用到paginator的一些其他属性\n\n首先检测总的页数，如果只有一页，自然就不需要分页了。通过paginator的total_pages属性能判断总页数：\n\n<code>\n{% if paginator.total_pages &gt; 1 %}\n&lt;!-- 分页代码 --&gt;\n{% endif %}\n</code>\n\n我们需要一个跳转到上一页的按钮，这个按钮在第一页不需要显示，通过paginator的previous_page属性来判断是否是第一个页面，使用paginator的previous_page_path来输出上一页的路径，注意在前面添加baseurl，并进行一些必要的字符替换：\n\n<code>\n{% if paginator.previous_page %}\n    &lt;a href=\&quot;{{ paginator.previous_page_path | prepend: site.baseurl | replace: &#39;//&#39;, &#39;/&#39; }}\&quot;上一页&lt;/a&gt;\n{% endif %}\n</code>\n\n接着是生成所有页面的按钮，并使当前页按钮无效化，遍历所有页面，使用paginator的page属性来确定当前页，如果是当前页，则按钮无效，否则使用{{ site.paginate</em>path | prepend: site.baseurl | replace: &#39;//&#39;, &#39;/&#39; | replace: &#39;:num&#39;, page }}来将:num替换成当前页面的数字生成页面路径：\n\n<code>\n{% for page in (1..paginator.total_pages) %}\n    {% if page == paginator.page %}\n      &lt;span class=\&quot;active\&quot;&gt;{{ page }}&lt;/span&gt;\n    {% elsif page == 1 %}\n      &lt;a href=\&quot;{{ &#39;/index.html&#39; | prepend: site.baseurl | replace: &#39;//&#39;, &#39;/&#39; }}\&quot;&gt;{{ page }}&lt;/a&gt;\n    {% else %}\n      &lt;a href=\&quot;{{ site.paginate_path | prepend: site.baseurl | replace: &#39;//&#39;, &#39;/&#39; | replace: &#39;:num&#39;, page }}\&quot;&gt;{{ page }}&lt;/a&gt;\n    {% endif %}\n{% endfor %}\n</code>\n\n最后生成一个下一页的按钮，在最后一页不显示，和上一页按钮类似，通过paginator的next_page_path来确定是否还有下一页：\n\n<code>\n{% if paginator.next_page %}\n    &lt;a href=\&quot;{{ paginator.next_page_path | prepend: site.baseurl | replace: &#39;//&#39;, &#39;/&#39; }}\&quot;&gt;下一页&lt;/a&gt;\n{% endif %}\n</code>\n\n这样一个完整的分页导航功能就做好了，效果就和博客主页上的分页效果是一样的\n\n总结\n\njekyll的分页总的来说还算给力，基本的功能可以完成。但是有一些缺陷，就是category，tag的分类分页无法实现，必须通过插件的方式来做。但是github不允许三方插件，所以只能通过一些其他的方式实现了。\n\n&gt; 引用：<a href="http://segmentfault.com/a/1190000000406015%5Cn">http://segmentfault.com/a/1190000000406015\n</a>&quot;, &quot;excerpt&quot;=&gt;&quot;<blockquote>\n<p>引用：<a href=\"http://segmentfault.com/a/1190000000406015\"><a href="http://segmentfault.com/a/1190000000406015">http://segmentfault.com/a/1190000000406015</a></a></p>\n</blockquote>\n&quot;}来将:num替换成当前页面的数字生成页面路径：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">
+</code></pre></div>
+<p>最后生成一个下一页的按钮，在最后一页不显示，和上一页按钮类似，通过paginator的next_page_path来确定是否还有下一页：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">
+</code></pre></div>
+<p>这样一个完整的分页导航功能就做好了，效果就和博客主页上的分页效果是一样的</p>
+
+<p>总结</p>
+
+<p>jekyll的分页总的来说还算给力，基本的功能可以完成。但是有一些缺陷，就是category，tag的分类分页无法实现，必须通过插件的方式来做。但是github不允许三方插件，所以只能通过一些其他的方式实现了。</p>
+
+<blockquote>
+<p>引用：<a href="http://segmentfault.com/a/1190000000406015">http://segmentfault.com/a/1190000000406015</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/vim-as-ide" title="上一篇: 使用vim打造IDE"><i class="icon-chevron-left"></i></a>          <a href="/blog/markdown-insert-formula" title="下一篇: Markdwon中插入数学公式"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/vim-as-ide" title="Previous Post: 使用vim打造IDE">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/markdown-insert-formula" title="Next Post: Markdwon中插入数学公式">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

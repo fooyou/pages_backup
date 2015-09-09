@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>linux下抓取屏幕至动态gif图像中</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/linux-screen-2-gif';
+	// var disqus_url = 'http://fooyou.github.io/blog/linux-screen-2-gif';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>linux下抓取屏幕至动态gif图像中</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-09-08 <small>. Document . <a href="http://fooyou.github.io/blog/linux-screen-2-gif#disqus_thread" data-disqus-identifier="/blog/linux-screen-2-gif">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/linux" title="按标签 &quot;linux&quot;浏览"><u>linux</u></a>     <a href="/tags/screencapture" title="按标签 &quot;screencapture&quot;浏览"><u>screencapture</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/the-art-of-commandline" title="上一篇: 命令行的艺术"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/bash-commnad-1-base" title="下一篇: bash命令基础篇"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <h3 id="以下是实际效果：">以下是实际效果：</h3>
+
+<p><img src="https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/2015-09-07_17%3A34%3A51.gif" alt="sample"></p>
+
+<p>操作步骤：</p>
+
+<ol>
+<li>启动脚本 ./screen2gif</li>
+<li>选中要录制的屏幕区域</li>
+<li>返回脚本，按q退出录制</li>
+<li>等待一会儿，gif生成完毕。</li>
+<li>OK，到Home/Pictures下查看吧！</li>
+</ol>
+
+<h2 id="怎么实现：">怎么实现：</h2>
+
+<h3 id="屏幕抓取">屏幕抓取</h3>
+
+<p>FFcast可以使用户选择屏幕一块区域并使用第三方工具比如ffmpeg进行屏幕录像。</p>
+
+<p>ffcast是Arch linux社区的一些黑客的荣耀作品，可以在github上找到<a href="https://github.com/lolilolicon/FFcast2">ffcast</a>，它只依赖于<code>bash</code>和<code>ffmpeg</code>，并使用<a href="https://github.com/lolilolicon/xrectsel">xrectsel</a>进行矩形选择。</p>
+
+<p>还可以对ffmpeg命令进行扩展。我使用<code>-r 15</code>来进行每秒种捕获15帧，<code>-codec:v huffyuv</code>进行无损录制。</p>
+
+<h3 id="gif化">Gif化</h3>
+
+<p>Imagemagick可以读取<code>.avi</code>视频并有一些gif优化的小把戏能减少gif文件的大小同时还能保持好的画面质量。<code>convert</code>命令的<code>-layers Optimize</code>参数可启动Gif优化，我使用的最后的convert命令如下：</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>convert -set delay 1x40 -layers Optimize <span class="nv">$TMP_AVI</span> <span class="nv">$HOME</span>/Pictures/<span class="k">$(</span>date +%Y-%m-%d_%H:%M:%S<span class="k">)</span>.gif
+</code></pre></div>
+<p>其中 -delay 1x40 ：指每秒40帧</p>
+
+<h3 id="最后的脚本代码">最后的脚本代码</h3>
+
+<p>将以下代码另存为：screen2gif，并添加可执行权限，即可使用了。</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">TMP_AVI</span><span class="o">=</span><span class="k">$(</span>mktemp /tmp/outXXXXXXXXXX.avi<span class="k">)</span>
+ffcast -s % ffmpeg -y -f x11grab -show_region <span class="m">1</span> -framerate <span class="m">15</span> <span class="se">\</span>
+    -video_size %s -i %D+%c -codec:v huffyuv                  <span class="se">\</span>
+    -vf <span class="nv">crop</span><span class="o">=</span><span class="s2">&quot;iw-mod(iw\\,2):ih-mod(ih\\,2)&quot;</span> <span class="nv">$TMP_AVI</span>         <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> convert -set delay 1x40 -layers Optimize <span class="nv">$TMP_AVI</span> <span class="nv">$HOME</span>/Pictures/<span class="k">$(</span>date +%Y-%m-%d_%H:%M:%S<span class="k">)</span>.gif  <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm <span class="nv">$TMP_AVI</span>
+</code></pre></div>
+<p><em>注：</em></p>
+
+<p>ffmpeg和ffcast的安装略。</p>
+
+<p>参考：</p>
+
+<blockquote>
+<p><a href="http://unix.stackexchange.com/questions/113695/gif-screencasting-the-unix-way">http://unix.stackexchange.com/questions/113695/gif-screencasting-the-unix-way</a></p>
+</blockquote>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/the-art-of-commandline" title="上一篇: 命令行的艺术"><i class="icon-chevron-left"></i></a>          <a href="/blog/bash-commnad-1-base" title="下一篇: bash命令基础篇"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/the-art-of-commandline" title="Previous Post: 命令行的艺术">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/bash-commnad-1-base" title="Next Post: bash命令基础篇">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>

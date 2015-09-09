@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!-- <html class="fuelux" lang="en"> -->
+<html class="fuelux" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>使用vim打造IDE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <script src="/js/jquery.min.js" type="text/javascript"></script>
+        <link href="/css/fuelux.css" rel="stylesheet" />
+        <link href="/css/fuelux-responsive.css" rel="stylesheet" />
+        <script src="/js/loader.min.js" type="text/javascript"></script>
+        <link href="/css/style_midnight.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!--
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            -->
+            <div class="row">
+                <div class="span8 columns">
+                    <a class="brand" href="http://fooyou.github.io">书亚博园</a>
+                </div>
+                <div class="span3 columns">
+                    <a class="brand" href="http://fooyou.github.io/atom.xml">RSS</a>
+                </div>
+            </div>
+            <!--
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li class="">
+                        <a href="http://fooyou.github.io"><i class="icon-home"></i> 主页</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-comment"></i> 社交 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="http://www.linkedin.com/pub/joshua-liu/8a/a75/3a2" rel="tooltip" title="到领英找我" target="_blank">LinkedIn</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="http://fooyou.github.io/atom.xml" rel="tooltip" title="RSS订阅" target="_blank">RSS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-list"></i> 项目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class=""><a href="https://github.com/fooyou/notes" rel="tooltip" title="学习笔记" target="_blank">笔记</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</div>
+        <div class="container">
+            <div class="marketing">
+                <link rel="stylesheet" href="/css/pygments/trac.css">
+
+<!-- 添加公式支持 -->
+
+
+<div class="content">
+    <script type="text/javascript">
+	// //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	// var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+	// var disqus_identifier = '/blog/vim-as-ide';
+	// var disqus_url = 'http://fooyou.github.io/blog/vim-as-ide';
+	// //* * * DON'T EDIT BELOW THIS LINE * * */
+	// (function () {
+	// 	var s = document.createElement('script'); s.async = true;
+	// 	s.type = 'text/javascript';
+	// 	s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+	// 	(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	// }());
+</script>
+
+<div class="row">
+    <div class="span12 column">
+        <p><h1>使用vim打造IDE</h1></p>
+    </div>
+</div>
+<div class="row">
+    <div class="span12 column">
+        <h5><strong>2015-08-13 <small>. Document . <a href="http://fooyou.github.io/blog/vim-as-ide#disqus_thread" data-disqus-identifier="/blog/vim-as-ide">评论</a></small></strong>
+        <br/><small>标签:  <a href="/tags/vim" title="按标签 &quot;vim&quot;浏览"><u>vim</u></a>    </small><br/><br/>
+    </div>
+</div>
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <p class="pull-right"> <a href="/blog/elementaryos-scratch-chinese-input" title="上一篇: elementary OS Freya中文输入的解决方法"><i class="icon-chevron-left"></i></a> 	    	<a href="/blog/jekyll-blog-paginator" title="下一篇: jekyll博客的分页实现"><i class="icon-chevron-right"></i></a> 	 </p>
+    </div>
+</div>
+    <blockquote>
+<p>参见：<a href="https://www.safaribooksonline.com/blog/2014/11/23/way-vim-ide/">https://www.safaribooksonline.com/blog/2014/11/23/way-vim-ide/</a></p>
+</blockquote>
+
+<p>越来越喜欢vim，当然我还是很喜欢Sublime Text，但是最近一直在linux server上写代码，所以就开始用vim，等一些按键熟悉之后发现脱离鼠标后，使用键盘疯狂敲击真的是非常爽的事。</p>
+
+<h3 id="所需vim插件">所需vim插件</h3>
+
+<table><thead>
+<tr>
+<th>插件名</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vundle</td>
+<td>管理vim插件的插件，需要在.vimrc中增/删插件</td>
+</tr>
+<tr>
+<td>NERDTree</td>
+<td>IDE的必需品，Tree目录结构，有许多子插件</td>
+</tr>
+<tr>
+<td>ctrlp</td>
+<td>类似Sublime Ctrl+P功能，极速检索目录树中的文件</td>
+</tr>
+<tr>
+<td>neocomplcache</td>
+<td>自动补全的插件，最棒的，谁用谁知道</td>
+</tr>
+<tr>
+<td>airline</td>
+<td>状态bar，自认为很有用，显示当前文件状态，编码格式，等等</td>
+</tr>
+</tbody></table>
+
+<p>还有很多美好的插件，不过对于我来说这些已经够用了。.vimrc配置文件如下，里面有说明。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;                                      通用设置 
+&quot; -------------------------------------------------------------------------------------------
+set number                    &quot; 显示行号
+set tabstop=4                 &quot; Tab长度为4
+set softtabstop=4             &quot; 
+set shiftwidth=4              &quot;
+set expandtab                 &quot; 空格代替Tab，否：set noexpandtab
+
+
+
+&quot;                                  Vundle Vim插件管理
+&quot; -------------------------------------------------------------------------------------------
+set nocompatible              &quot; be iMproved, required
+filetype off                  &quot; required
+
+&quot; set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+&quot; alternatively, pass a path where Vundle should install plugins
+&quot;call vundle#begin(&#39;~/some/path/here&#39;)
+
+&quot; let Vundle manage Vundle, required
+Plugin &#39;VundleVim/Vundle.vim&#39;
+
+&quot; 追上sublime text的 ctrp-p
+Plugin &#39;kien/ctrlp.vim&#39;
+
+&quot; 文件浏览插件
+Plugin &#39;scrooloose/nerdtree&#39;
+
+&quot; 灵活显示status/tabline的超轻量级插件
+Plugin &#39;bling/vim-airline&#39;
+
+&quot; 自动补全的终极插件-Neocomplcache
+Plugin &#39;Shougo/neocomplcache.vim&#39;
+
+&quot; All of your Plugins must be added before the following line
+call vundle#end()            &quot; required
+filetype plugin indent on    &quot; required
+&quot; To ignore plugin indent changes, instead use:
+&quot;filetype plugin on
+&quot;
+&quot; Brief help
+&quot; :PluginList       - lists configured plugins
+&quot; :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+&quot; :PluginSearch foo - searches for foo; append `!` to refresh local cache
+&quot; :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+&quot;
+&quot; see :h vundle for more details or wiki for FAQ
+&quot; Put your non-Plugin stuff after this line
+
+&quot;                                 NERDTree 插件配置 
+&quot; --------------------------------------------------------------------------------------------
+&quot;  按下 Ctrol+n 显示/隐藏 NERDTree
+map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+
+&quot; 当前目录下打开NERDTree
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap &lt;leader&gt;n :NERDTree .&lt;CR&gt;
+
+&quot;                                 airline 插件配置 
+&quot; --------------------------------------------------------------------------------------------
+set laststatus=2                &quot; 默认打开airline
+&quot; let g:airline#extensions#tabline#enabled = 1      &quot; 打开tabline
+
+&quot;                                 neocomplcache 插件配置 
+&quot; --------------------------------------------------------------------------------------------
+&quot;Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+&quot; Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+&quot; Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+&quot; Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+&quot; Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = &#39;\*ku\*&#39;
+
+&quot; Enable heavy features.
+&quot; Use camel case completion.
+&quot;let g:neocomplcache_enable_camel_case_completion = 1
+&quot; Use underbar completion.
+&quot;let g:neocomplcache_enable_underbar_completion = 1
+
+&quot; Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ &#39;default&#39; : &#39;&#39;,
+    \ &#39;vimshell&#39; : $HOME.&#39;/.vimshell_hist&#39;,
+    \ &#39;scheme&#39; : $HOME.&#39;/.gosh_completions&#39;
+        \ }
+
+&quot; Define keyword.
+if !exists(&#39;g:neocomplcache_keyword_patterns&#39;)
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns[&#39;default&#39;] = &#39;\h\w*&#39;
+
+&quot; Plugin key-mappings.
+inoremap &lt;expr&gt;&lt;C-g&gt;     neocomplcache#undo_completion()
+inoremap &lt;expr&gt;&lt;C-l&gt;     neocomplcache#complete_common_string()
+
+&quot; Recommended key-mappings.
+&quot; &lt;CR&gt;: close popup and save indent.
+inoremap &lt;silent&gt; &lt;CR&gt; &lt;C-r&gt;=&lt;SID&gt;my_cr_function()&lt;CR&gt;
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . &quot;\&lt;CR&gt;&quot;
+  &quot; For no inserting &lt;CR&gt; key.
+  &quot;return pumvisible() ? neocomplcache#close_popup() : &quot;\&lt;CR&gt;&quot;
+endfunction
+&quot; &lt;TAB&gt;: completion.
+inoremap &lt;expr&gt;&lt;TAB&gt;  pumvisible() ? &quot;\&lt;C-n&gt;&quot; : &quot;\&lt;TAB&gt;&quot;
+&quot; &lt;C-h&gt;, &lt;BS&gt;: close popup and delete backword char.
+inoremap &lt;expr&gt;&lt;C-h&gt; neocomplcache#smart_close_popup().&quot;\&lt;C-h&gt;&quot;
+inoremap &lt;expr&gt;&lt;BS&gt; neocomplcache#smart_close_popup().&quot;\&lt;C-h&gt;&quot;
+inoremap &lt;expr&gt;&lt;C-y&gt;  neocomplcache#close_popup()
+inoremap &lt;expr&gt;&lt;C-e&gt;  neocomplcache#cancel_popup()
+&quot; Close popup by &lt;Space&gt;.
+&quot;inoremap &lt;expr&gt;&lt;Space&gt; pumvisible() ? neocomplcache#close_popup() : &quot;\&lt;Space&gt;&quot;
+
+&quot; For cursor moving in insert mode(Not recommended)
+&quot;inoremap &lt;expr&gt;&lt;Left&gt;  neocomplcache#close_popup() . &quot;\&lt;Left&gt;&quot;
+&quot;inoremap &lt;expr&gt;&lt;Right&gt; neocomplcache#close_popup() . &quot;\&lt;Right&gt;&quot;
+&quot;inoremap &lt;expr&gt;&lt;Up&gt;    neocomplcache#close_popup() . &quot;\&lt;Up&gt;&quot;
+&quot;inoremap &lt;expr&gt;&lt;Down&gt;  neocomplcache#close_popup() . &quot;\&lt;Down&gt;&quot;
+&quot; Or set this.
+&quot;let g:neocomplcache_enable_cursor_hold_i = 1
+&quot; Or set this.
+&quot;let g:neocomplcache_enable_insert_char_pre = 1
+
+&quot; AutoComplPop like behavior.
+&quot;let g:neocomplcache_enable_auto_select = 1
+
+&quot; Shell like behavior(not recommended).
+&quot;set completeopt+=longest
+&quot;let g:neocomplcache_enable_auto_select = 1
+&quot;let g:neocomplcache_disable_auto_complete = 1
+&quot;inoremap &lt;expr&gt;&lt;TAB&gt;  pumvisible() ? &quot;\&lt;Down&gt;&quot; : &quot;\&lt;C-x&gt;\&lt;C-u&gt;&quot;
+
+&quot; Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+&quot; Enable heavy omni completion.
+if !exists(&#39;g:neocomplcache_force_omni_patterns&#39;)
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.php = &#39;[^. \t]-&gt;\h\w*\|\h\w*::&#39;
+let g:neocomplcache_force_omni_patterns.c = &#39;[^.[:digit:] *\t]\%(\.\|-&gt;\)&#39;
+let g:neocomplcache_force_omni_patterns.cpp = &#39;[^.[:digit:] *\t]\%(\.\|-&gt;\)\|\h\w*::&#39;
+
+&quot; For perlomni.vim setting.
+&quot; https://github.com/c9s/perlomni.vim
+let g:neocomplcache_force_omni_patterns.perl = &#39;\h\w*-&gt;\h\w*\|\h\w*::&#39;
+</code></pre></div>
+<h3 id="vim-工作区切换的快捷键">vim 工作区切换的快捷键</h3>
+
+<table><thead>
+<tr>
+<th>按键</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ctrl + w + h</td>
+<td>光标Focus左侧树形目录</td>
+</tr>
+<tr>
+<td>ctrl + w + l</td>
+<td>光标Focus右侧文件显示窗口</td>
+</tr>
+<tr>
+<td>ctrl + w + w</td>
+<td>光标在多个split窗口间切换</td>
+</tr>
+<tr>
+<td>ctrl + w + r</td>
+<td>移动当前窗口的布局位置</td>
+</tr>
+</tbody></table>
+
+<h3 id="nerdtree的常用快捷键">NERDTree的常用快捷键</h3>
+
+<table><thead>
+<tr>
+<th>按键</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>o</td>
+<td>在已有窗口中打开文件、目录或书签，并Focus到该窗口</td>
+</tr>
+<tr>
+<td>go</td>
+<td>在已有窗口中打开文件、目录或书签，但不跳到该窗口</td>
+</tr>
+<tr>
+<td>t</td>
+<td>在新 Tab 中打开选中文件/书签，并跳到新 Tab</td>
+</tr>
+<tr>
+<td>T</td>
+<td>在新 Tab 中打开选中文件/书签，但不跳到新 Tab</td>
+</tr>
+<tr>
+<td>i</td>
+<td>split 一个新窗口打开选中文件，并跳到该窗口</td>
+</tr>
+<tr>
+<td>gi</td>
+<td>split 一个新窗口打开选中文件，但不跳到该窗口</td>
+</tr>
+<tr>
+<td>s</td>
+<td>vsplit 一个新窗口打开选中文件，并跳到该窗口</td>
+</tr>
+<tr>
+<td>gs</td>
+<td>vsplit 一个新 窗口打开选中文件，但不跳到该窗口</td>
+</tr>
+<tr>
+<td>!</td>
+<td>执行当前文件</td>
+</tr>
+<tr>
+<td>O</td>
+<td>递归打开选中 结点下的所有目录</td>
+</tr>
+<tr>
+<td>x</td>
+<td>合拢选中结点的父目录</td>
+</tr>
+<tr>
+<td>X</td>
+<td>递归 合拢选中结点下的所有目录</td>
+</tr>
+<tr>
+<td>e</td>
+<td>编辑当前路径</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><CR></td>
+<td>同 o</td>
+</tr>
+<tr>
+<td>双击</td>
+<td>同 o</td>
+</tr>
+<tr>
+<td>中击</td>
+<td>对于文件同 i，对于目录同 e</td>
+</tr>
+<tr>
+<td>D</td>
+<td>删除当前书签</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>P</td>
+<td>跳到根结点</td>
+</tr>
+<tr>
+<td>p</td>
+<td>跳到父结点</td>
+</tr>
+<tr>
+<td>K</td>
+<td>跳到当前目录下同级的第一个结点</td>
+</tr>
+<tr>
+<td>J</td>
+<td>跳到当前目录下同级的最后一个结点</td>
+</tr>
+<tr>
+<td>k</td>
+<td>跳到当前目录下同级的前一个结点</td>
+</tr>
+<tr>
+<td>j</td>
+<td>跳到当前目录下同级的后一个结点</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>C</td>
+<td>将选中目录或选中文件的父目录设为根结点</td>
+</tr>
+<tr>
+<td>u</td>
+<td>将当前根结点的父目录设为根目录，并变成合拢原根结点</td>
+</tr>
+<tr>
+<td>U</td>
+<td>将当前根结点的父目录设为根目录，但保持展开原根结点</td>
+</tr>
+<tr>
+<td>r</td>
+<td>递归刷新选中目录</td>
+</tr>
+<tr>
+<td>R</td>
+<td>递归刷新根结点</td>
+</tr>
+<tr>
+<td>m</td>
+<td>显示文件系统菜单</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>将 CWD 设为选中目录</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>I</td>
+<td>切换是否显示隐藏文件</td>
+</tr>
+<tr>
+<td>f</td>
+<td>切换是否使用文件过滤器</td>
+</tr>
+<tr>
+<td>F</td>
+<td>切换是否显示文件</td>
+</tr>
+<tr>
+<td>B</td>
+<td>切换是否显示书签</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>q</td>
+<td>关闭 NerdTree 窗口</td>
+</tr>
+<tr>
+<td>?</td>
+<td>切换是否显示 Quick Help</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ma</td>
+<td>新建目录或文件</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<div class="row">
+    <div class="span6 column">
+    </div>
+    <div class="span3 column">
+        <br>
+        <p class="pull-right"> <a href="/blog/elementaryos-scratch-chinese-input" title="上一篇: elementary OS Freya中文输入的解决方法"><i class="icon-chevron-left"></i></a>          <a href="/blog/jekyll-blog-paginator" title="下一篇: jekyll博客的分页实现"><i class="icon-chevron-right"></i></a>    </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="span12 columns">
+        <h2>评论</h2>
+        <p>欢迎回复，请保证一不跑题二要干净</p>
+        <!-- 使用的是外国的disqus评论服务，国内有一个叫多说的评论服务也不错（http://duoshuo.com/） -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            //* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'meshinestar';
+            
+            //* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+        <footer class="footer">
+  <div class="container">
+	<p class="pull-right"> <a href="/blog/elementaryos-scratch-chinese-input" title="Previous Post: elementary OS Freya中文输入的解决方法">&laquo; 上一篇</a> 	  |  <a href="#">回到顶</a>  |   	<a href="/blog/jekyll-blog-paginator" title="Next Post: jekyll博客的分页实现">下一篇 &raquo; </a> 	 </p>        
+	<p>页面最后生成于 2015-09-09</p>
+	<p>如果需要, <a href="mailto:liuchaozhenyu@gmail.com" title="邮件联系我"  target="_blank" >邮件联系我</a>.</p>
+
+    <!-- Twitter No need to open this code -->
+<!--     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> -->
+
+    <!-- Google + -->
+<!--     <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script> -->
+
+  </div>
+</footer>
+
+        
+
+        <script type="text/javascript">
+            // //* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            // var disqus_shortname = 'meshinestar'; // required: replace example with your forum shortname
+            // //* * * DON'T EDIT BELOW THIS LINE * * */
+            // (function () {
+            //     var s = document.createElement('script'); s.async = true;
+            //     s.type = 'text/javascript';
+            //     s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            //     (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            // }());
+        </script>
+
+        <!-- Google Analytics -->
+        <!--    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29830549-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        </script>    -->
+    </body>
+</html>
