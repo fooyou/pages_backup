@@ -39,7 +39,7 @@ title: "书亚博园"
 {% for page in (1..paginator.total_pages) %}
     {% if page == paginator.page %}
         <span class="active">{{ page }} </span>
-    {% else if page == 1 %}
+    {% elsif page == 1 %}
         <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
     {% else %}
         <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
