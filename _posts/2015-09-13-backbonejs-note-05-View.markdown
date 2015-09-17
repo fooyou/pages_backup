@@ -135,10 +135,10 @@ var searchView = new SearchView();
 
 把最开始定义的模板中的内容换成下面这个。
 
-```html
+```
 <ul>
 <% _.each(labels, function(name) { %>
-    <% if(name != "label2") {%>
+    <% if(name != "label2") { %>
     <li><%= name %></li>
     <% } %>
 <% }); %>
