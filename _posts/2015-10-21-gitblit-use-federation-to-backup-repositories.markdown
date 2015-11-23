@@ -31,11 +31,12 @@ __gitblit server端__
 2. 修改文件./tomcat/webapps/gitblit/WEB-INF/data/gitblit.properties中的`federation.passphrase`，随便填几个和Java不冲突的字符串或者数字等>即可（该选项上面有完整的说明）。
 3. 重启tomcat
 4. 在tomcat/logs/catalina.out中搜索`token`，就会找到类似如下信息（官方说web ui里用admin也能看到，不过没找到地方）
-        ```
-        2015-10-21 13:35:19 [INFO ] Federation ALL token = 6d8s9ab981a0c9ccaaa5373f68af20f00222a938
-        2015-10-21 13:35:19 [INFO ] Federation USERS_AND_REPOSITORIES token = 7xc92d8aad61f204dc2517057405ece157a5c1df6
-        2015-10-21 13:35:19 [INFO ] Federation REPOSITORIES token = cffea3979020a588d9w0b7c3ede9bf6c8b17d522
-        ```
+
+    ```
+    2015-10-21 13:35:19 [INFO ] Federation ALL token = 6d8s9ab981a0c9ccaaa5373f68af20f00222a938
+    2015-10-21 13:35:19 [INFO ] Federation USERS_AND_REPOSITORIES token = 7xc92d8aad61f204dc2517057405ece157a5c1df6
+    2015-10-21 13:35:19 [INFO ] Federation REPOSITORIES token = cffea3979020a588d9w0b7c3ede9bf6c8b17d522
+    ```
 
 __备份server端（使用fedclient）__
 
