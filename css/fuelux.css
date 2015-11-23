@@ -4203,10 +4203,20 @@ textarea.span1,
   float: left;
   padding: 10px 20px 10px;
   margin-left: -20px;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 200;
   color: #eeeeee;
   text-shadow: 0 1px 0 #ffffff;
+}
+
+.fuelux .navbar .linkitem{
+  display: block;
+  float: left;
+  padding: 10px 20px 10px;
+  margin-left: -20px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #eeeeee;
 }
 
 .fuelux .navbar .brand:hover {

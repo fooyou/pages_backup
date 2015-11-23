@@ -848,3 +848,16 @@ a.social.gplus {
 a.social.gplus:hover {
   background: url(/img/social_icons.png) -170px -34px no-repeat;
 }
+
+@font-face {
+    font-family: 'Hanyizhuanshu';
+    src: url('../fonts/Hanyizhuanshu.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.motto {
+    font-family: 'Hanyizhuanshu';
+    font-size: 35px;
+    line-height: normal;
+}

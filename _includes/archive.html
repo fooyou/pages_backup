@@ -1,6 +1,6 @@
-<h2>博文一览</h2>
+<h2>最近更新</h2>
 <ul>
-    {% for post in site.posts %}
-        <li>{{ post.date | date: "%Y-%m" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% for post in site.posts limit:10 %}
+        <li>{{ post.date | date: "%Y-%m-%d" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
 </ul>
