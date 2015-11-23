@@ -5,7 +5,7 @@ category: Document
 tags: linux
 date: 2015-10-21 13:20:10
 published: true
-summary:可用/dev/urandom生成
+summary: 可用"/dev/urandom"生成
 image: pirates.svg
 comment: true
 latex: false
