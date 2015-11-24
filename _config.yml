@@ -6,5 +6,5 @@ redcarpet:
 highlighter: pygments
 permalink: /blog/:title
 gems: [jekyll-paginate]
-paginate: 15     # 每15篇分页
+paginate: 10     # 每15篇分页
 paginate_path: "page:num"
