@@ -2,7 +2,7 @@
 layout: post
 title: Solr 5.3的使用
 category: Document
-tags: linux
+tags: solr
 date: 2015-10-22 10:51:10
 published: true
 summary: 以前玩过4.9，转眼间都到5.3了，后悔以前没有做笔记，现在记录一下吧。
