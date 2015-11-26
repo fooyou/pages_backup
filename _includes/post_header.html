@@ -19,7 +19,7 @@
 </div>
 <div class="row">
     <div class="span12 column">
-        <h5><strong>{{ page.date | date: "%Y-%m-%d" }} <small>. {{ page.category }} . <a href="http://fooyou.github.io{{ page.url }}#disqus_thread" data-disqus-identifier="{{ page.url }}">评论</a></small></strong>
+        <h5><strong>{{ page.date | date: "%Y-%m-%d" }} <small>. {{ page.category }} </small></strong>
         <br/><small>标签: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="按标签 &quot;{{ tag }}&quot;浏览"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small><br/><br/>
     </div>
 </div>
@@ -27,6 +27,18 @@
     <div class="span6 column">
     </div>
     <div class="span3 column">
-        <p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="上一篇: {{page.previous.title}}"><i class="icon-chevron-left"></i></a> 	{% endif %}   {% if page.next.url %} 	<a href="{{page.next.url}}" title="下一篇: {{page.next.title}}"><i class="icon-chevron-right"></i></a> 	{% endif %} </p>
+        <p class="pull-right">
+            {% if page.next.url %}
+            <a href="{{page.next.url}}" title="上一篇: {{page.next.title}}">
+                <i class="icon-chevron-left"></i>
+            </a>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if page.previous.url %}
+            <a href="{{page.previous.url}}" title="下一篇: {{page.previous.title}}">
+                <i class="icon-chevron-right"></i>
+            </a>
+            {% endif %}
+        </p>
     </div>
 </div>

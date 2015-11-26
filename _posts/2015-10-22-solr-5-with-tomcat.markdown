@@ -32,6 +32,7 @@ Solr包解压位置：~/Downloads/solr-5.3.1 = SR
 4. 将 solr 压缩包中 solr-5.3.1/server/resources/log4j.properties 复制到Tomcat/webapps/solr/WEB-INF/lib 目录中
 5. 将 solr 压缩包中 solr-5.3.1/server/solr 目录复制到计算机某个目录下，如~/solr_home
 6. 打开Tomcat/webapps/solr/WEB-INF下的web.xml，找到如下配置内容（初始状态下该内容是被注释掉的）：
+
     ```
     <env-entry>
         <env-entry-name>solr/home</env-entry-name>
@@ -40,6 +41,7 @@ Solr包解压位置：~/Downloads/solr-5.3.1 = SR
     </env-entry>
     ```
     将<env-entry-value>中的内容改成你的solr_home路径，这里是~/solr_home
+
 7. 保存关闭，而后启动tomcat，在浏览器输入http://localhost:8080/solr即可出现Solr的管理界面
 
 ## 创建Core并简单配置
@@ -58,6 +60,7 @@ Core Admin里的创建Core是不好用的，必须先创建solrconfig.xml和sche
     $ bin/solr start                    # 启动solr
     $ bin/solr create -c films          # 创建Core films
     ```
+
     这种方式启动的Solr home是 SR/server/solr，刚创建的films就在这里，把它Copy到tomcat配置的solr home下SH里，重启tomcat就可以看到它了。接下来的films操作就以tomcat的那个为准了。
 
 2. 添加两个字段的schema：

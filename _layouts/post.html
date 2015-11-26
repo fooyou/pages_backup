@@ -19,7 +19,19 @@ layout: default
     </div>
     <div class="span3 column">
         <br>
-        <p class="pull-right">{% if page.previous.url %} <a href="{{page.previous.url}}" title="上一篇: {{page.previous.title}}"><i class="icon-chevron-left"></i></a>   {% endif %}   {% if page.next.url %}    <a href="{{page.next.url}}" title="下一篇: {{page.next.title}}"><i class="icon-chevron-right"></i></a>   {% endif %} </p>
+        <p class="pull-right">
+            {% if page.next.url %}
+            <a href="{{page.next.url}}" title="上一篇: {{page.next.title}}">
+                <i class="icon-chevron-left"></i>
+            </a>
+            {% endif %}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if page.previous.url %}
+            <a href="{{page.previous.url}}" title="下一篇: {{page.previous.title}}">
+                <i class="icon-chevron-right"></i>
+            </a>
+            {% endif %}
+        </p>
     </div>
 </div>
 
