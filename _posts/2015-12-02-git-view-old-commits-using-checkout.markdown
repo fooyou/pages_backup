@@ -56,40 +56,40 @@ git checkout <commit hash id>
  git log --pretty  | 使log结果更好看
 
 
- ```
- $ git log --pretty=oneline
- ca82a6dff817ec66f44342007202690a93763949 changed the version number
- 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 removed unnecessary test
- a11bef06a3f659402fe7563abf99ad00de2209e6 first commit
- ```
+```
+$ git log --pretty=oneline
+ca82a6dff817ec66f44342007202690a93763949 changed the version number
+085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 removed unnecessary test
+a11bef06a3f659402fe7563abf99ad00de2209e6 first commit
+```
 
 
- ```
- $ git log --pretty=format:"%h - %an, %ar : %s"
- ca82a6d - Scott Chacon, 6 years ago : changed the version number
- 085bb3b - Scott Chacon, 6 years ago : removed unnecessary test
- a11bef0 - Scott Chacon, 6 years ago : first commit
- ```
+```
+$ git log --pretty=format:"%h - %an, %ar : %s"
+ca82a6d - Scott Chacon, 6 years ago : changed the version number
+085bb3b - Scott Chacon, 6 years ago : removed unnecessary test
+a11bef0 - Scott Chacon, 6 years ago : first commit
+```
 
- 参考：
+参考：
 
- > https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+> https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
- ### 2. git checkout
+### 2. git checkout
 
- git checkout 主要有三种用途:
+git checkout 主要有三种用途:
 
- 1. 检出分支（branch）
+1. 检出分支（branch）
 
     ```
     $ git checkout <branch>
     ```
- 2. 检出文件
+2. 检出文件
 
     ```
     $ git checkout <commit> <file>
     ```
- 3. 检出提交(commit or tag)
+3. 检出提交(commit or tag)
 
     ```
     $ git checkout <commit>
