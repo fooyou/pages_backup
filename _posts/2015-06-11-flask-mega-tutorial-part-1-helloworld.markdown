@@ -81,7 +81,7 @@ $ virtualenv flask
 然后到flask/bin目录下，激活虚拟环境：
 
 ```
-$ flask/bin/activate
+$ source flask/bin/activate
 ```
 
 _注：关闭虚拟环境直接使用deactivate_
