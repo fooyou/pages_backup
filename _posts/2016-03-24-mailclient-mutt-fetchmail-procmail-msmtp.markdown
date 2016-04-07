@@ -229,7 +229,7 @@ set ispell="/usr/bin/aspell"        # 英文拼写检查
 #
 my_hdr From: xxxx@gmail.com                 # 缺省发件地址
 my_hdr Reply-To: xxxx@gmail.com             # 缺省回件地址
-set index_format="| %4C | %Z | %{%b %d} | %-15.15L | %s"
+set index_format="| %4C | %Z | %{ %b %d } | %-15.15L | %s"
 set folder_format="| %2C | %t %N | %8s | %d | %f"
 
 

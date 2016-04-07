@@ -32,19 +32,19 @@ C++ 程序设计直接支持三种 programming paradigms：
 
 - 隐含转化
 
-    ```C++
+    ```cpp
     shape *ps = new circle();
     ```
 
 - virtual function 机制：
 
-    ```C++
+    ```cpp
     ps->rotate();
     ```
 
 - dynamic_cast 和 typeid 运算符：
 
-    ```C++
+    ```cpp
     if (circle *pc = dynamic_cast <circle*> (ps) ) {}
     ```
 
@@ -68,7 +68,7 @@ C++ 程序设计直接支持三种 programming paradigms：
 
 分析一段代码：
 
-```C+
+```cpp
 Bear b;
 ZooAnimal za = b; // 会引起切割（sliced）
 
