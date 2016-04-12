@@ -19,7 +19,7 @@ comment: true
 **Q：什么是 tty 终端？**
 
 
-A： tty 是 **T**ele**TY**pewritter 的缩写，1960 年代为帮助视力和听力受损的人们使用电话，发明了 TeleTYpeWritter，于是就有了 tty 。
+A： tty 是 TeleTYpewritter 的缩写，1960 年代为帮助视力和听力受损的人们使用电话，发明了 TeleTYpeWritter，于是就有了 tty 。
 
 
 在 Unix / Linux / BSD 系统上， ttys 是用户可以登录的物理终端，现在的 *nixe 系统的终端分为物理（physical）tty 和虚拟（virtual）vty 终端，无论操作系统有无图形界面，在 Unix 或者类 Unix 系统中都有 tty 终端。
