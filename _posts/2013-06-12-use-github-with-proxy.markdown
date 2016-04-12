@@ -12,10 +12,10 @@ image: pirates.svg
 comment: true
 ---
 
-网络代理下，用git直接与github仓库对接，就是不好用，因为：
+网络代理下，用 git 通过 ssh 协议与 github 仓库对接，就是不好用，因为：
 
-1. 
-2. 
+1. https
+2. ssh
 
 解决方法：
 
@@ -63,3 +63,7 @@ my $pass = "passwd";
 ```
 $ git clone git@github.com:fooyou/jekyll-bootstrap.git
 ```
+
+## 其他
+
+也可使用 haproxy
