@@ -176,6 +176,11 @@ clear linenum
 clear filename:linenum
 ```
 
+## Hacker Staff
+
+[gdbinit](https://github.com/gdbinit/Gdbinit) GDB 的配置文件，Hacker 的必备[dotgdb](https://github.com/dholm/dotgdb) 更棒的基于 gdbinit 的 gdb 配置文件，添加了众多实用的命令。
+
+
 参考：
 
 > http://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/
