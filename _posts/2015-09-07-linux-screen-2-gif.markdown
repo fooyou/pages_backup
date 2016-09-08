@@ -13,7 +13,7 @@ latex: false
 
 ### 以下是实际效果：
 
-![sample](https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/2015-09-07_17%3A34%3A51.gif)
+![sample](https://raw.githubusercontent.com/fooyou/fooyou.github.io/master/img/posts/2015-09-07_17-34-51.gif)
 
 操作步骤：
 

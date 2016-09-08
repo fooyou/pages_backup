@@ -14,7 +14,7 @@ comment: true
 
 效果图如下：
 
-![vim search demo](https://github.com/fooyou/fooyou.github.io/blob/master/img/posts/2015-12-01_11:15:29.gif?raw=true)
+![vim search demo](https://github.com/fooyou/fooyou.github.io/blob/master/img/posts/2015-12-01_11-15-29.gif?raw=true)
 
 搜了一下发现vim wiki里有关于多个文件搜索内容的文章，比如[find in file within vim](http://vim.wikia.com/wiki/Find_in_files_within_Vim)，里面介绍了几个命令：
 
