@@ -68,6 +68,6 @@ Gtk/IMModule=fcitx
 visible=false
 ```
 
-卸载，修改这个文件，再安装就成功了。
+但是，直接忽略掉它，找到 Language Setting 点击添加"+" 号，将 sogou 加入，就好用了。
 
 > https://bbs.archlinux.org/viewtopic.php?id=206234
