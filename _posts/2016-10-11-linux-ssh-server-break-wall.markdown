@@ -69,6 +69,13 @@ fastssh.com-qwerter@usa.serverip.co's password:
 $ chromium-browser --proxy-server="socks://localhost:7070"
 ```
 
+若是在 Mac 上，则如何启动
+
+```
+$ open -a /Applications/Google\ Chrome.app --args --proxy-server="socks5://localhost:7070"
+```
+
+
 OK！使用 google 搜索吧（程序员离开 google 该怎么活？！）
 
 当然，你也可以为 chrome 装个 Proxy SwitchShape 的插件，把这个选项配置在插件里(试过了，这个不好用)
