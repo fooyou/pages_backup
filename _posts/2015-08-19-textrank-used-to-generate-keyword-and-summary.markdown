@@ -50,7 +50,7 @@ $$ PR(A) = PR(B) + PR(C) + PR(D) $$
 继续假设B也有链接到C，并且D也有链接到包括A的3个页面。如下图示：
 
 ```
-{{ digraph 2 }}
+{{ digraph }}
 bgcolor="transparent";
 node [color="#dddddd" fontcolor="#dddddd"]
 edge [color="#dddddd"]

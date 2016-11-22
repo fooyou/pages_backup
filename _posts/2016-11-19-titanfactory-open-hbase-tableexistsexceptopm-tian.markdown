@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TitanFactory.open('conf/titan-hbase-es.properties') TableExistsExcptions: titan 的解决方法 
+title: TitanFactory open titan-hbase-es.properties TableExistsExcptions 的解决方法 
 category: Document
 tags: bigdata
 date: 2016-11-19 17:11:37
@@ -11,6 +11,8 @@ comment: true
 ---
 
 上篇说到了使用 titan + hbase 搭建为分布式图数据库引擎，并且使用 GraphOfTheGodsFactory 成功加载到了 hbase 里。现在需要把 GraphOfTheGodsFactory 的这个图删掉，然后用其他测试数据创建图。
+
+## 问题
 
 一开始我找到 /tmp/ 目录下把 /hbase 目录删除了，然后在 gremlin 中重新 open 新图，却发生了如下异常：
 
@@ -162,7 +164,7 @@ java.lang.RuntimeException: com.thinkaurelius.titan.diskstorage.TemporaryBackend
 
 如果 Zookeeper 是使用的 Hbase 自带的，先确保 Hbase 运行，然后：
 
-```
+```sh
 $ ./bin/hbase zkcli
 zkcli> rmr /hbase
 ```
