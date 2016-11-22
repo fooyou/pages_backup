@@ -154,7 +154,7 @@ java.lang.RuntimeException: com.thinkaurelius.titan.diskstorage.TemporaryBackend
     ...
 ```
 
-最重要的看到的异常是 `TabelExistsException: tita`。
+最重要的看到的异常是 `TabelExistsException: titan`。
 
 ## 解决方法
 

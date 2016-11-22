@@ -78,3 +78,11 @@ comment: true
 
 打开 Win7.vbox 把其下的所有路径修改为新路径就可以了。
 
+## 4. 修改 VDI 虚拟磁盘的 UUID
+
+有时候需要复制多个 VDI 磁盘用于测试，由于复制后有相同的 UUID 值，导致 VBox 无法加载新的磁盘，可以用如下命令修改 UUID：
+
+```sh
+$ VBoxManage internalcommands sethduuid "path/to/vdi"
+```
+
