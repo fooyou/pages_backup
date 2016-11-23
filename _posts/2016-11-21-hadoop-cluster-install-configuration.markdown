@@ -30,3 +30,9 @@ Cluster、单节点模式需要用到 SSH 登录，需要安装 SSH server：
 ```sh
 $ sudo apt-get install openssh-server openssh-client
 ```
+
+## 参考
+
+> http://blog.csdn.net/lemon_tree12138/article/details/51607646
+> http://blog.csdn.net/poisonchry/article/details/27205003
+> http://www.powerxing.com/install-hadoop-cluster/
