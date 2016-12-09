@@ -10,10 +10,61 @@ image: pirates.svg
 comment: true
 ---
 
+![Alt text](http://g.gravizo.com/svg?
+@startuml;
+actor User;
+participant "First Class" as A;
+participant "Second Class" as B;
+participant "Last Class" as C;
+User -> A: DoWork;
+activate A;
+A -> B: Create Request;
+activate B;
+B -> C: DoWork;
+activate C;
+C --> B: WorkDone;
+destroy C;
+B --> A: Request Created;
+deactivate B;
+A --> User: Done;
+deactivate A;
+@enduml
+)
+
+
+![图2：智能诊断时序图](http://g.gravizo.com/g?
+@startuml;
+
+actor User;
+participant "问诊管理" as A;
+participant "疾病推理" as B;
+participant "图数据库" as C;
+
+User -> A: 输入症状;
+activate A;
+
+A -> B: 输入症状群;
+activate B;
+
+B -> C: 获得图节点权重;
+activate C;
+
+C --> B: 返回;
+deactivate C;
+
+B --> A: 返回;
+deactivate B;
+
+A --> User: 完成;
+deactivate A;
+
+@enduml
+)
+
 ## 画 graph
 
 ```
-![Alt text](http://g.gravizo.com/g?
+![Alt text](http://g.gravizo.com/svg?
   digraph G {
     aize ="4,4";
     main [shape=box];
@@ -104,4 +155,5 @@ class Counter extends Structural {
 */
 class RunningCounter extends Counter{}
 '>
+
 
