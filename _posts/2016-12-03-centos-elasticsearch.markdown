@@ -10,6 +10,9 @@ image: pirates.svg
 comment: true 
 ---
 
+ElasticSearch 的中文介绍文档：
+
+http://www.learnes.net/getting_started/tutorial_indexing.html
 
 > 
 > https://github.com/elastic/elasticsearch-servicewrapper
