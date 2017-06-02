@@ -10,5 +10,5 @@ image: pirates.svg
 comment: true
 ---
 
-![screenshot](https://mastodon.sdf.org/media/tQGqYu86ADex4-tICHo)
+![screenshot](https://mastodon.sdf.org/system/media_attachments/files/000/027/492/original/4bee1e16280b2fb5.png?1496387188)
 
