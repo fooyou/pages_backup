@@ -1,10 +1,9 @@
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
-# markdown: rdiscount
-# markdown: kramdown
+# markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 permalink: /blog/:title
-gems: [jekyll-paginate]
 paginate: 10     # 每15篇分页
 paginate_path: "page:num"
+
+plugins:
+  - jekyll-paginate
