@@ -53,7 +53,7 @@ comment: true
 2. 扩容命令：
 
 	```
-	$ vboxmanage modifyhd a2502312-474c-4684-a59f-5ac624f87127 --resize 10240
+	$ vboxmanage modifyhd a2502312-474c-4684-a59f-5ac624f87127 --resize 102400(M)
 	```
 
 	扩容至 100G，打开 VirtualBox 可以发现该虚拟系统的磁盘已变为 100G
