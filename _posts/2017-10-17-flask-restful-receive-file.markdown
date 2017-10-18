@@ -31,7 +31,7 @@ flask-restful 编写起 restful api 简直是神器（想到李云龙的大刀�
 
 ### Step 1: 实现文件 Argument:
 
-```py
+```python
 class FileStorageArgument(Argument):
     '''
     此类用于接受处理 flask-restful 收到的所有上传文件
@@ -46,7 +46,7 @@ class FileStorageArgument(Argument):
 
 ### Step 2: 声明 RequestParser 时指定 argument_class 为文件 Argument
 
-```py
+```python
 parser = reqparse.RequestParser(argument_class=FileStorageArgument)
 ```
 
@@ -54,7 +54,7 @@ parser = reqparse.RequestParser(argument_class=FileStorageArgument)
 
 ### 完整代码如下：
 
-```py
+```python
 #!/usr/bin/env python
 # coding: utf-8
 # @File Name: tspredict.py
