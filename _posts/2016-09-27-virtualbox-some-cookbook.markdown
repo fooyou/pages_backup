@@ -34,6 +34,8 @@ comment: true
 
 也需要两个步骤，借助 VirtualBox 提供的工具 vboxmanage 扩容
 
+MACOS 的以下命令在 /Applications/VirtualBox.app/Contents/MacOS/ 下，可以 cd 到这个目录，然后使用 vb 命令。
+
 1. 查看虚拟磁盘命令：
 
 	```
@@ -62,7 +64,21 @@ comment: true
 
 	Windows 系统（Win 7+）可以 计算机->管理->磁盘->选中系统盘，扩展卷。
 	
-	Linux 系统（待补）
+	Linux 系统:
+
+        1. 需要用到 gparted（sudo apt-get install gparted）
+        2. 打开它 sudo gparted
+        3. 记住 linux-swap 分区，一般为 2G
+        4. 右键 linux-swap，点击 `Swapoff`
+        5. 右键 linux-swap，点击 `Delete`
+        6. 点击绿色对号，应用当前设置
+        7. 右键点击 /dev/sda2 磁盘，然后删除它 delete
+        8. 右键点击 /dev/sda1，点击 Resize，扩展的时候预留出 linux-swap 的空间（2G）
+        9. 右键点击余下的（2G）空间创建扩展分区
+        10. 选择 `linux-swap`
+        11. 点绿色对号，应用修改1
+        12. 在 `linux-swap` 分区上，右键然后点击 `swapon`
+        13. reboot -> OK!
 
 ## 3. 修改 VDI 虚拟磁盘路径
 
