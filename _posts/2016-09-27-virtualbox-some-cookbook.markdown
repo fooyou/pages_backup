@@ -78,7 +78,9 @@ MACOS 的以下命令在 /Applications/VirtualBox.app/Contents/MacOS/ 下，可�
         10. 选择 `linux-swap`
         11. 点绿色对号，应用修改1
         12. 在 `linux-swap` 分区上，右键然后点击 `swapon`
-        13. reboot -> OK!
+        13. 右键 linux-swap 分区，点击 Information，拷贝 UUID 或记住 /dev/sdax 信息
+        14. sudo vim /etc/fstab 修改之前的交换分区，为新的交换分区
+        15. reboot -> OK!
 
 ## 3. 修改 VDI 虚拟磁盘路径
 
