@@ -170,7 +170,8 @@
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 20px;
+  font-weight: 300;
+  /* line-height: 20px; */
   color: #f0e7d5;
   background-color: #ffffff;
 }
@@ -806,6 +807,7 @@
   border-left: 5px solid #005580;
   background-color: #191919;
   color: #e8e8e8;
+  line-height:20px;
 }
 
 .fuelux blockquote p {

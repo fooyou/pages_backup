@@ -28,8 +28,11 @@ comment: true
 
 - [Learning Deep Architectures for AI](http://www.iro.umontreal.ca/~lisa/pointeurs/TR1312.pdf) Yoshua Bengio
 - [Deep Learning](http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf) LeCun et al
+
     *这个几乎是北美的 AI 社区的研究历史，即便如此，还是有很多的研究者没有被提及。*
+
 - [Deep learning in Neural Networks: An Overview](http://arxiv.org/pdf/1404.7828v4.pdf) Jürgen Schmidhuber
+
     这个关于 AI 的深度的历史补足了 LeCun Deep Learning 里未涉及的领域
 
 
